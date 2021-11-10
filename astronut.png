@@ -1,0 +1,927 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="https://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US" prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#">
+<head><script>if(navigator.userAgent.match(/MSIE|Internet Explorer/i)||navigator.userAgent.match(/Trident\/7\..*?rv:11/i)){var href=document.location.href;if(!href.match(/[?&]nowprocket/)){if(href.indexOf("?")==-1){if(href.indexOf("#")==-1){document.location.href=href+"?nowprocket=1"}else{document.location.href=href.replace("#","?nowprocket=1#")}}else{if(href.indexOf("#")==-1){document.location.href=href+"&nowprocket=1"}else{document.location.href=href.replace("#","&nowprocket=1#")}}}}</script><script>class RocketLazyLoadScripts{constructor(e){this.triggerEvents=e,this.eventOptions={passive:!0},this.userEventListener=this.triggerListener.bind(this),this.delayedScripts={normal:[],async:[],defer:[]},this.allJQueries=[]}_addUserInteractionListener(e){this.triggerEvents.forEach((t=>window.addEventListener(t,e.userEventListener,e.eventOptions)))}_removeUserInteractionListener(e){this.triggerEvents.forEach((t=>window.removeEventListener(t,e.userEventListener,e.eventOptions)))}triggerListener(){this._removeUserInteractionListener(this),"loading"===document.readyState?document.addEventListener("DOMContentLoaded",this._loadEverythingNow.bind(this)):this._loadEverythingNow()}async _loadEverythingNow(){this._delayEventListeners(),this._delayJQueryReady(this),this._handleDocumentWrite(),this._registerAllDelayedScripts(),this._preloadAllScripts(),await this._loadScriptsFromList(this.delayedScripts.normal),await this._loadScriptsFromList(this.delayedScripts.defer),await this._loadScriptsFromList(this.delayedScripts.async),await this._triggerDOMContentLoaded(),await this._triggerWindowLoad(),window.dispatchEvent(new Event("rocket-allScriptsLoaded"))}_registerAllDelayedScripts(){document.querySelectorAll("script[type=rocketlazyloadscript]").forEach((e=>{e.hasAttribute("src")?e.hasAttribute("async")&&!1!==e.async?this.delayedScripts.async.push(e):e.hasAttribute("defer")&&!1!==e.defer||"module"===e.getAttribute("data-rocket-type")?this.delayedScripts.defer.push(e):this.delayedScripts.normal.push(e):this.delayedScripts.normal.push(e)}))}async _transformScript(e){return await this._requestAnimFrame(),new Promise((t=>{const n=document.createElement("script");let i;[...e.attributes].forEach((e=>{let t=e.nodeName;"type"!==t&&("data-rocket-type"===t&&(t="type",i=e.nodeValue),n.setAttribute(t,e.nodeValue))})),e.hasAttribute("src")&&this._isValidScriptType(i)?(n.addEventListener("load",t),n.addEventListener("error",t)):(n.text=e.text,t()),e.parentNode.replaceChild(n,e)}))}_isValidScriptType(e){return!e||""===e||"string"==typeof e&&["text/javascript","text/x-javascript","text/ecmascript","text/jscript","application/javascript","application/x-javascript","application/ecmascript","application/jscript","module"].includes(e.toLowerCase())}async _loadScriptsFromList(e){const t=e.shift();return t?(await this._transformScript(t),this._loadScriptsFromList(e)):Promise.resolve()}_preloadAllScripts(){var e=document.createDocumentFragment();[...this.delayedScripts.normal,...this.delayedScripts.defer,...this.delayedScripts.async].forEach((t=>{const n=t.getAttribute("src");if(n){const t=document.createElement("link");t.href=n,t.rel="preload",t.as="script",e.appendChild(t)}})),document.head.appendChild(e)}_delayEventListeners(){let e={};function t(t,n){!function(t){function n(n){return e[t].eventsToRewrite.indexOf(n)>=0?"rocket-"+n:n}e[t]||(e[t]={originalFunctions:{add:t.addEventListener,remove:t.removeEventListener},eventsToRewrite:[]},t.addEventListener=function(){arguments[0]=n(arguments[0]),e[t].originalFunctions.add.apply(t,arguments)},t.removeEventListener=function(){arguments[0]=n(arguments[0]),e[t].originalFunctions.remove.apply(t,arguments)})}(t),e[t].eventsToRewrite.push(n)}function n(e,t){let n=e[t];Object.defineProperty(e,t,{get:()=>n||function(){},set(i){e["rocket"+t]=n=i}})}t(document,"DOMContentLoaded"),t(window,"DOMContentLoaded"),t(window,"load"),t(window,"pageshow"),t(document,"readystatechange"),n(document,"onreadystatechange"),n(window,"onload"),n(window,"onpageshow")}_delayJQueryReady(e){let t=window.jQuery;Object.defineProperty(window,"jQuery",{get:()=>t,set(n){if(n&&n.fn&&!e.allJQueries.includes(n)){n.fn.ready=n.fn.init.prototype.ready=function(t){e.domReadyFired?t.bind(document)(n):document.addEventListener("rocket-DOMContentLoaded",(()=>t.bind(document)(n)))};const t=n.fn.on;n.fn.on=n.fn.init.prototype.on=function(){if(this[0]===window){function e(e){return e.split(" ").map((e=>"load"===e||0===e.indexOf("load.")?"rocket-jquery-load":e)).join(" ")}"string"==typeof arguments[0]||arguments[0]instanceof String?arguments[0]=e(arguments[0]):"object"==typeof arguments[0]&&Object.keys(arguments[0]).forEach((t=>{delete Object.assign(arguments[0],{[e(t)]:arguments[0][t]})[t]}))}return t.apply(this,arguments),this},e.allJQueries.push(n)}t=n}})}async _triggerDOMContentLoaded(){this.domReadyFired=!0,await this._requestAnimFrame(),document.dispatchEvent(new Event("rocket-DOMContentLoaded")),await this._requestAnimFrame(),window.dispatchEvent(new Event("rocket-DOMContentLoaded")),await this._requestAnimFrame(),document.dispatchEvent(new Event("rocket-readystatechange")),await this._requestAnimFrame(),document.rocketonreadystatechange&&document.rocketonreadystatechange()}async _triggerWindowLoad(){await this._requestAnimFrame(),window.dispatchEvent(new Event("rocket-load")),await this._requestAnimFrame(),window.rocketonload&&window.rocketonload(),await this._requestAnimFrame(),this.allJQueries.forEach((e=>e(window).trigger("rocket-jquery-load"))),window.dispatchEvent(new Event("rocket-pageshow")),await this._requestAnimFrame(),window.rocketonpageshow&&window.rocketonpageshow()}_handleDocumentWrite(){const e=new Map;document.write=document.writeln=function(t){const n=document.currentScript;n||console.error("WPRocket unable to document.write this: "+t);const i=document.createRange(),r=n.parentElement;let a=e.get(n);void 0===a&&(a=n.nextSibling,e.set(n,a));const o=document.createDocumentFragment();i.setStart(o,0),o.appendChild(i.createContextualFragment(t)),r.insertBefore(o,a)}}async _requestAnimFrame(){return new Promise((e=>requestAnimationFrame(e)))}static run(){const e=new RocketLazyLoadScripts(["keydown","mousemove","touchmove","touchstart","touchend","wheel"]);e._addUserInteractionListener(e)}}RocketLazyLoadScripts.run();
+</script>
+	<!-- Quantcast Choice. Consent Manager Tag v2.0 (for TCF 2.0) -->
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript" async=true>
+(function() {
+  var host = window.location.hostname;
+  var element = document.createElement('script');
+  var firstScript = document.getElementsByTagName('script')[0];
+  var url = 'https://quantcast.mgr.consensu.org'
+    .concat('/choice/', 'deCwlQAR_q3bc', '/', host, '/choice.js')
+  var uspTries = 0;
+  var uspTriesLimit = 3;
+  element.async = true;
+  element.type = 'text/javascript';
+  element.src = url;
+
+  firstScript.parentNode.insertBefore(element, firstScript);
+
+  function makeStub() {
+    var TCF_LOCATOR_NAME = '__tcfapiLocator';
+    var queue = [];
+    var win = window;
+    var cmpFrame;
+
+    function addFrame() {
+      var doc = win.document;
+      var otherCMP = !!(win.frames[TCF_LOCATOR_NAME]);
+
+      if (!otherCMP) {
+        if (doc.body) {
+          var iframe = doc.createElement('iframe');
+
+          iframe.style.cssText = 'display:none';
+          iframe.name = TCF_LOCATOR_NAME;
+          doc.body.appendChild(iframe);
+        } else {
+          setTimeout(addFrame, 5);
+        }
+      }
+      return !otherCMP;
+    }
+
+    function tcfAPIHandler() {
+      var gdprApplies;
+      var args = arguments;
+
+      if (!args.length) {
+        return queue;
+      } else if (args[0] === 'setGdprApplies') {
+        if (
+          args.length > 3 &&
+          args[2] === 2 &&
+          typeof args[3] === 'boolean'
+        ) {
+          gdprApplies = args[3];
+          if (typeof args[2] === 'function') {
+            args[2]('set', true);
+          }
+        }
+      } else if (args[0] === 'ping') {
+        var retr = {
+          gdprApplies: gdprApplies,
+          cmpLoaded: false,
+          cmpStatus: 'stub'
+        };
+
+        if (typeof args[2] === 'function') {
+          args[2](retr);
+        }
+      } else {
+        queue.push(args);
+      }
+    }
+
+    function postMessageEventHandler(event) {
+      var msgIsString = typeof event.data === 'string';
+      var json = {};
+
+      try {
+        if (msgIsString) {
+          json = JSON.parse(event.data);
+        } else {
+          json = event.data;
+        }
+      } catch (ignore) {}
+
+      var payload = json.__tcfapiCall;
+
+      if (payload) {
+        window.__tcfapi(
+          payload.command,
+          payload.version,
+          function(retValue, success) {
+            var returnMsg = {
+              __tcfapiReturn: {
+                returnValue: retValue,
+                success: success,
+                callId: payload.callId
+              }
+            };
+            if (msgIsString) {
+              returnMsg = JSON.stringify(returnMsg);
+            }
+            event.source.postMessage(returnMsg, '*');
+          },
+          payload.parameter
+        );
+      }
+    }
+
+    while (win) {
+      try {
+        if (win.frames[TCF_LOCATOR_NAME]) {
+          cmpFrame = win;
+          break;
+        }
+      } catch (ignore) {}
+
+      if (win === window.top) {
+        break;
+      }
+      win = win.parent;
+    }
+    if (!cmpFrame) {
+      addFrame();
+      win.__tcfapi = tcfAPIHandler;
+      win.addEventListener('message', postMessageEventHandler, false);
+    }
+  };
+
+  makeStub();
+
+  var uspStubFunction = function() {
+    var arg = arguments;
+    if (typeof window.__uspapi !== uspStubFunction) {
+      setTimeout(function() {
+        if (typeof window.__uspapi !== 'undefined') {
+          window.__uspapi.apply(window.__uspapi, arg);
+        }
+      }, 500);
+    }
+  };
+
+  var checkIfUspIsReady = function() {
+    uspTries++;
+    if (window.__uspapi === uspStubFunction && uspTries < uspTriesLimit) {
+      console.warn('USP is not accessible');
+    } else {
+      clearInterval(uspInterval);
+    }
+  };
+
+  if (typeof window.__uspapi === 'undefined') {
+    window.__uspapi = uspStubFunction;
+    var uspInterval = setInterval(checkIfUspIsReady, 6000);
+  }
+})();
+</script>
+<!-- End Quantcast Choice. Consent Manager Tag v2.0 (for TCF 2.0) -->
+	<script>
+__tcfapi('addEventListener', 2, function(tcData, success) {
+    if (success) {
+        if (tcData.eventStatus == 'useractioncomplete' || tcData.eventStatus == 'tcloaded') {
+            var hasStoreOnDeviceConsent = tcData.purpose.consents[1] || false;
+
+            if (hasStoreOnDeviceConsent) {
+                var adsbygoogle_script = document.createElement('script');
+                adsbygoogle_script.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js';
+                document.head.appendChild(adsbygoogle_script);
+            }
+        }
+    }
+});
+</script>
+	<script data-ad-client="ca-pub-8822717667672157" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	
+<title>Astronaut PNG Transparent Images | PNG All</title><link rel="stylesheet" href="https://www.pngall.com/wp-content/cache/min/1/27a7a80fa4feea620a7e76c1f5949433.css" media="all" data-minify="1" />
+<link rel="profile" href="https://gmpg.org/xfn/11" />
+<link rel="alternate" type="application/rss+xml" title="PNG All RSS Feed" href="https://www.pngall.com/feed" />
+<link rel="alternate" type="application/atom+xml" title="PNG All Atom Feed" href="https://www.pngall.com/feed/atom" />
+<link rel="icon" href="/favicon.ico" type="image/x-icon" />
+
+<link rel="pingback" href="https://www.pngall.com/xmlrpc.php" />
+<!--[if lt IE 9]>
+	<script src="https://www.pngall.com/wp-content/themes/boxes/js/css3-mediaqueries.js"></script>
+<![endif]-->
+
+<!--[if lt IE 7]>
+	<link rel="stylesheet" href="https://www.pngall.com/wp-content/themes/boxes/css/font-awesome-ie7.min.css">
+<![endif]-->
+<meta name='robots' content='max-image-preview:large' />
+
+<meta name="description"  content="An astronaut or cosmonaut is a person trained by a human space flight program to command, pilot, or work as a member of a spacecraft crew. While generally," />
+
+<meta name="keywords"  content="space" />
+
+<script type="application/ld+json" class="aioseop-schema">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://www.pngall.com/#organization","url":"https://www.pngall.com/","name":"PNG All","sameAs":[]},{"@type":"WebSite","@id":"https://www.pngall.com/#website","url":"https://www.pngall.com/","name":"PNG All","publisher":{"@id":"https://www.pngall.com/#organization"}},{"@type":"WebPage","@id":"https://www.pngall.com/astronaut-png#webpage","url":"https://www.pngall.com/astronaut-png","inLanguage":"en-US","name":"Astronaut PNG Transparent Images","isPartOf":{"@id":"https://www.pngall.com/#website"},"breadcrumb":{"@id":"https://www.pngall.com/astronaut-png#breadcrumblist"},"image":{"@type":"ImageObject","@id":"https://www.pngall.com/astronaut-png#primaryimage","url":"https://www.pngall.com/wp-content/uploads/5/Astronaut-Space-PNG-File.png","width":498,"height":539},"primaryImageOfPage":{"@id":"https://www.pngall.com/astronaut-png#primaryimage"},"datePublished":"2020-10-11T08:22:35+00:00","dateModified":"2020-10-11T08:22:35+00:00"},{"@type":"Article","@id":"https://www.pngall.com/astronaut-png#article","isPartOf":{"@id":"https://www.pngall.com/astronaut-png#webpage"},"author":{"@id":"https://www.pngall.com/author/rojal#author"},"headline":"Astronaut PNG Transparent Images","datePublished":"2020-10-11T08:22:35+00:00","dateModified":"2020-10-11T08:22:35+00:00","commentCount":0,"mainEntityOfPage":{"@id":"https://www.pngall.com/astronaut-png#webpage"},"publisher":{"@id":"https://www.pngall.com/#organization"},"articleSection":"Space","image":{"@type":"ImageObject","@id":"https://www.pngall.com/astronaut-png#primaryimage","url":"https://www.pngall.com/wp-content/uploads/5/Astronaut-Space-PNG-File.png","width":498,"height":539}},{"@type":"Person","@id":"https://www.pngall.com/author/rojal#author","name":"Rojal","sameAs":[],"image":{"@type":"ImageObject","@id":"https://www.pngall.com/#personlogo","url":"https://secure.gravatar.com/avatar/84d5cc5721a1ce3a23a196f35fba7267?s=96&d=mm&r=g","width":96,"height":96,"caption":"Rojal"}},{"@type":"BreadcrumbList","@id":"https://www.pngall.com/astronaut-png#breadcrumblist","itemListElement":[{"@type":"ListItem","position":1,"item":{"@type":"WebPage","@id":"https://www.pngall.com/","url":"https://www.pngall.com/","name":"Find High-Quality Transparent PNG Images - PNG All"}},{"@type":"ListItem","position":2,"item":{"@type":"WebPage","@id":"https://www.pngall.com/astronaut-png","url":"https://www.pngall.com/astronaut-png","name":"Astronaut PNG Transparent Images"}}]}]}</script>
+<link rel="canonical" href="https://www.pngall.com/astronaut-png" />
+			<script type="rocketlazyloadscript" data-rocket-type="text/javascript" >
+				window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+				ga('create', 'UA-196746120-5', 'auto');
+				// Plugins
+				
+				ga('send', 'pageview');
+			</script>
+			<script type="rocketlazyloadscript" async src="https://www.google-analytics.com/analytics.js"></script>
+			
+
+<link rel="alternate" type="application/rss+xml" title="PNG All &raquo; Feed" href="https://www.pngall.com/feed" />
+<link rel="alternate" type="application/rss+xml" title="PNG All &raquo; Comments Feed" href="https://www.pngall.com/comments/feed" />
+<link rel="alternate" type="application/rss+xml" title="PNG All &raquo; Astronaut PNG Transparent Images Comments Feed" href="https://www.pngall.com/astronaut-png/feed" />
+<meta content="boxes v.1.0" name="generator"/><meta content="Theme Junkie Framework v.1.0.5" name="generator"/><style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	
+
+
+
+
+
+
+
+
+
+<script type="rocketlazyloadscript" data-rocket-type='text/javascript' src='https://www.pngall.com/wp-content/themes/boxes/js/jquery.min.js?ver=1.8.3' id='jquery-js'></script>
+<script type="rocketlazyloadscript" data-rocket-type='text/javascript' src='https://www.pngall.com/wp-content/themes/boxes/js/jquery-ui-1.8.5.custom.min.js?ver=1.8.5' id='jquery-ui-js'></script>
+<script type="rocketlazyloadscript" data-rocket-type='text/javascript' src='https://www.pngall.com/wp-content/themes/boxes/js/jquery.flexslider-min.js?ver=2.2.0' id='jquery-flexslider-js'></script>
+<script type="rocketlazyloadscript" data-minify="1" data-rocket-type='text/javascript' src='https://www.pngall.com/wp-content/cache/min/1/wp-content/themes/boxes/js/superfish.js?ver=1635361925' id='jquery-superfish-js'></script>
+<script type="rocketlazyloadscript" data-minify="1" data-rocket-type='text/javascript' src='https://www.pngall.com/wp-content/cache/min/1/wp-content/themes/boxes/js/html5.js?ver=1635361925' id='html5-js'></script>
+<script type="rocketlazyloadscript" data-minify="1" data-rocket-type='text/javascript' src='https://www.pngall.com/wp-content/cache/min/1/wp-content/themes/boxes/js/custom.js?ver=1635361925' id='jquery-custom-js'></script>
+<script type="rocketlazyloadscript" data-minify="1" data-rocket-type='text/javascript' src='https://www.pngall.com/wp-content/cache/min/1/wp-content/themes/boxes/functions/shortcodes/shortcodes.js?ver=1635361925' id='tj_shortcodes-js'></script>
+<link rel="https://api.w.org/" href="https://www.pngall.com/wp-json/" /><link rel="alternate" type="application/json" href="https://www.pngall.com/wp-json/wp/v2/posts/54005" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://www.pngall.com/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://www.pngall.com/wp-includes/wlwmanifest.xml" /> 
+
+<link rel='shortlink' href='https://www.pngall.com/?p=54005' />
+<style data-context="foundation-flickity-css">/*! Flickity v2.0.2
+http://flickity.metafizzy.co
+---------------------------------------------- */.flickity-enabled{position:relative}.flickity-enabled:focus{outline:0}.flickity-viewport{overflow:hidden;position:relative;height:100%}.flickity-slider{position:absolute;width:100%;height:100%}.flickity-enabled.is-draggable{-webkit-tap-highlight-color:transparent;tap-highlight-color:transparent;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.flickity-enabled.is-draggable .flickity-viewport{cursor:move;cursor:-webkit-grab;cursor:grab}.flickity-enabled.is-draggable .flickity-viewport.is-pointer-down{cursor:-webkit-grabbing;cursor:grabbing}.flickity-prev-next-button{position:absolute;top:50%;width:44px;height:44px;border:none;border-radius:50%;background:#fff;background:hsla(0,0%,100%,.75);cursor:pointer;-webkit-transform:translateY(-50%);transform:translateY(-50%)}.flickity-prev-next-button:hover{background:#fff}.flickity-prev-next-button:focus{outline:0;box-shadow:0 0 0 5px #09F}.flickity-prev-next-button:active{opacity:.6}.flickity-prev-next-button.previous{left:10px}.flickity-prev-next-button.next{right:10px}.flickity-rtl .flickity-prev-next-button.previous{left:auto;right:10px}.flickity-rtl .flickity-prev-next-button.next{right:auto;left:10px}.flickity-prev-next-button:disabled{opacity:.3;cursor:auto}.flickity-prev-next-button svg{position:absolute;left:20%;top:20%;width:60%;height:60%}.flickity-prev-next-button .arrow{fill:#333}.flickity-page-dots{position:absolute;width:100%;bottom:-25px;padding:0;margin:0;list-style:none;text-align:center;line-height:1}.flickity-rtl .flickity-page-dots{direction:rtl}.flickity-page-dots .dot{display:inline-block;width:10px;height:10px;margin:0 8px;background:#333;border-radius:50%;opacity:.25;cursor:pointer}.flickity-page-dots .dot.is-selected{opacity:1}</style><style data-context="foundation-slideout-css">.slideout-menu{position:fixed;left:0;top:0;bottom:0;right:auto;z-index:0;width:256px;overflow-y:auto;-webkit-overflow-scrolling:touch;display:none}.slideout-menu.pushit-right{left:auto;right:0}.slideout-panel{position:relative;z-index:1;will-change:transform}.slideout-open,.slideout-open .slideout-panel,.slideout-open body{overflow:hidden}.slideout-open .slideout-menu{display:block}.pushit{display:none}</style><!-- Custom Styling -->
+<style type="text/css">
+body { }        
+.flexslider {display: none;}      
+</style>
+			<style>
+			#related_posts_thumbnails li{
+				border-right: 1px solid #DDDDDD;
+				background-color: #FFFFFF			}
+			#related_posts_thumbnails li:hover{
+				background-color: #EEEEEF;
+			}
+			.relpost_content{
+				font-size:	16px;
+				color: 		#333333;
+			}
+			.relpost-block-single{
+				background-color: #FFFFFF;
+				border-right: 1px solid  #DDDDDD;
+				border-left: 1px solid  #DDDDDD;
+				margin-right: -1px;
+			}
+			.relpost-block-single:hover{
+				background-color: #EEEEEF;
+			}
+		</style>
+
+	<style>.ios7.web-app-mode.has-fixed header{ background-color: rgba(3,122,221,.88);}</style>
+<!-- START - Open Graph and Twitter Card Tags 3.1.1 -->
+ <!-- Facebook Open Graph -->
+  <meta property="og:locale" content="en_US"/>
+  <meta property="og:site_name" content="PNG All"/>
+  <meta property="og:title" content="Astronaut PNG Transparent Images"/>
+  <meta property="og:url" content="https://www.pngall.com/astronaut-png"/>
+  <meta property="og:type" content="article"/>
+  <meta property="og:description" content="An astronaut or cosmonaut is a person trained by a human space flight program to command, pilot, or work as a member of a spacecraft crew. While generally, these conditions are reserved for professional space travelers, sometimes the conditions apply"/>
+  <meta property="og:image" content="https://www.pngall.com/wp-content/uploads/5/Astronaut-Space-PNG-File.png"/>
+  <meta property="og:image:url" content="https://www.pngall.com/wp-content/uploads/5/Astronaut-Space-PNG-File.png"/>
+  <meta property="og:image:secure_url" content="https://www.pngall.com/wp-content/uploads/5/Astronaut-Space-PNG-File.png"/>
+  <meta property="og:image:width" content="498"/>
+  <meta property="og:image:height" content="539"/>
+  <meta property="article:publisher" content="http://www.facebook.com/pngall"/>
+ <!-- Google+ / Schema.org -->
+ <!-- Twitter Cards -->
+  <meta name="twitter:title" content="Astronaut PNG Transparent Images"/>
+  <meta name="twitter:url" content="https://www.pngall.com/astronaut-png"/>
+  <meta name="twitter:description" content="An astronaut or cosmonaut is a person trained by a human space flight program to command, pilot, or work as a member of a spacecraft crew. While generally, these conditions are reserved for professional space travelers, sometimes the conditions apply"/>
+  <meta name="twitter:image" content="https://www.pngall.com/wp-content/uploads/5/Astronaut-Space-PNG-File.png"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+ <!-- SEO -->
+ <!-- Misc. tags -->
+ <!-- is_singular -->
+<!-- END - Open Graph and Twitter Card Tags 3.1.1 -->
+	
+<noscript><style id="rocket-lazyload-nojs-css">.rll-youtube-player, [data-lazy-src]{display:none !important;}</style></noscript><script type="rocketlazyloadscript" data-rocket-type="text/javascript" src="//services.vlitag.com/adv1/?q=457f6c4a3632d1de0e3963acb07a6c9f"></script><script type="rocketlazyloadscript"> var vitag = vitag || {};</script>
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5a294aabc37a8cd8"></script>
+</head>
+<body class="post-template-default single single-post postid-54005 single-format-standard unknown">
+		<script type="rocketlazyloadscript" async data-cfasync="false">
+       const url = new URL(window.location.href);
+       const clickID = url.searchParams.get("click_id");
+       const sourceID = url.searchParams.get("source_id");
+
+       const s = document.createElement("script");
+       s.dataset.cfasync = "false";
+       s.src = "https://system-notify.app/f/sdk.js?z=415910";
+       s.onload = (opts) => {
+           opts.zoneID = 415910;
+           opts.extClickID = clickID;
+           opts.subID1 = sourceID;
+           opts.actions.onPermissionGranted = () => {};
+           opts.actions.onPermissionDenied = () => {};
+           opts.actions.onAlreadySubscribed = () => {};
+           opts.actions.onError = () => {};
+       };
+       document.head.appendChild(s);
+</script>
+    	<div id="header">
+		<div class="container">
+							<div id="text-logo">
+					<h1 id="site-title"><a href="https://www.pngall.com">PNG All</a></h1>
+					<p id="site-desc"></p>
+				</div><!-- #text-logo -->
+						<div id="primary-nav" class="container">
+				<ul id="primary-navigation" class="nav"><li id="menu-item-14775" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-14775"><a href="https://www.pngall.com/">Home</a></li>
+<li id="menu-item-18456" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-18456"><a href="https://www.pngall.com/categories">Categories</a></li>
+<li id="menu-item-14776" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-14776"><a href="https://www.pngall.com/about">About</a></li>
+<li id="menu-item-14777" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-14777"><a href="https://www.pngall.com/contact">Contact</a></li>
+<li id="menu-item-14778" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-14778"><a href="https://www.pngall.com/copyright-policy">Copyright Policy</a></li>
+<li id="menu-item-14783" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-14783"><a href="https://www.pngall.com/privacy-policy">Privacy Policy</a></li>
+</ul>				
+								
+					<div class="btn-nav-right">
+						<i class="icon-reorder"></i> Menu 
+					</div><!-- .btn-nav-right -->
+							
+			</div><!-- #primary-nav -->
+			
+						
+			<div class="clear"></div>
+	
+		</div><!-- .container -->
+	</div><!-- #header -->
+		
+						
+
+			<nav id="mobile-menu">
+				<div class="container">
+					<ul id="responsive-menu" class="ul"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-14775"><a href="https://www.pngall.com/">Home</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-18456"><a href="https://www.pngall.com/categories">Categories</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-14776"><a href="https://www.pngall.com/about">About</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-14777"><a href="https://www.pngall.com/contact">Contact</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-14778"><a href="https://www.pngall.com/copyright-policy">Copyright Policy</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-14783"><a href="https://www.pngall.com/privacy-policy">Privacy Policy</a></li>
+</ul>				</div>
+				<!-- .container -->
+			</nav><!-- #mobile-menu -->
+							<div id="main" class="container">
+		<center><p><span style="font-size:0.8em">Advertisements</span>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- Horizontal responsive PNG -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-8822717667672157"
+     data-ad-slot="3562069872"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</p></center>	<div id="content">
+	
+		
+			<article id="post-54005" class="post-54005 post type-post status-publish format-standard has-post-thumbnail hentry category-space">
+				
+								
+				<h1 class="entry-title">Astronaut PNG Transparent Images</h1>
+<div class="breadcrumbs" typeof="BreadcrumbList" vocab="https://schema.org/"> <!-- Breadcrumb NavXT 6.6.0 -->
+<span property="itemListElement" typeof="ListItem"><a property="item" typeof="WebPage" title="Go to Home Page" href="https://www.pngall.com" class="home" ><span property="name">Home</span></a><meta property="position" content="1"></span> &gt; <span property="itemListElement" typeof="ListItem"><a property="item" typeof="WebPage" title="Go to the Space category" href="https://www.pngall.com/category/space" class="taxonomy category" ><span property="name">Space</span></a><meta property="position" content="2"></span> &gt; <span class="post post-post current-item">Astronaut PNG Transparent Images</span> </div>
+				<p>
+					Download top and best high-quality free <strong>Astronaut PNG Transparent Images</strong> backgrounds available in various sizes. To view the full PNG size resolution click on any of the below image thumbnail.
+					<br>
+					<br>
+					<strong>License Info</strong>: <a href="https://creativecommons.org/licenses/by-nc/4.0/" rel="license" target="_blank">Creative Commons 4.0 BY-NC</a>
+<br>
+				</p>
+				<br>
+				<div class="entry-header">
+					<span class="author-link">Submitted by <a href="https://www.pngall.com/author/rojal" title="Posts by Rojal" rel="author">Rojal</a></span> on Oct 11, 2020				</div><!-- .entry-header -->
+				
+				<div class="clear"></div>		
+						<div id = 'vdo_ai_div'></div><script>(function(v,d,o,ai){ai=d.createElement('script');ai.defer=true;ai.async=true;ai.src=v.location.protocol+o;d.head.appendChild(ai);})(window, document, '//a.vdo.ai/core/pngall/vdo.ai.js');</script>
+						
+				
+				<div class="clear"></div>
+
+													
+									
+									
+					<div class="entry-content">
+						<p>An astronaut or cosmonaut is a person trained by a <a href="https://www.pngall.com/human-being-png" title="Human Being PNG Transparent Images" rel="noopener" target="_blank">human</a> <a href="https://www.pngall.com/space-png" title="Space PNG Transparent Images" rel="noopener" target="_blank">space</a> flight program to command, pilot, or work as a member of a <a href="https://www.pngall.com/nasa-png" title="NASA PNG Transparent Images" rel="noopener" target="_blank">spacecraft</a> crew. While generally, these conditions are reserved for professional space travelers, sometimes the conditions apply to everyone who <a href="https://www.pngall.com/travel-png" title="Travel PNG Transparent Images" rel="noopener" target="_blank">travels</a> into space, including <a href="https://www.pngall.com/scientist-png" title="Scientist PNG Transparent Images" rel="noopener" target="_blank">scientists</a>, politicians, <a href="https://www.pngall.com/reporter-png" title="Reporter PNG Transparent Images" rel="noopener" target="_blank">journalists</a>, and <a href="https://www.pngall.com/tourist-bus-png" title="Tourist Bus PNG Transparent Images" rel="noopener" target="_blank">tourists</a>. The root naut comes from the Greek word nautes, which means sailor. </p>
+<p>Until 2002, astronauts were sponsored and trained exclusively by governments, either by the <a href="https://www.pngall.com/military-award-png" title="Military Award PNG Transparent Images" rel="noopener" target="_blank">military</a> or civilian space agencies. With the suborbital flight of the privately funded SpaceShipOne in 2004, a new category of astronauts was created: the commercial astronaut. The criteria for what constitutes human flight into space vary, with some emphasis on the point at which the atmosphere becomes so tenuous that centrifugal force, rather than aerodynamic force, accounts for a significant portion of the weight of the flight object. The Fédération Aéronautique Internationale (FAI) Sporting Code for Astronautics only recognizes flights that exceed the Karman Line at an altitude of 100 kilometers (62 miles).  In the <a href="https://www.pngall.com/america-flag-png" title="United States of America Flag PNG Transparent Images" rel="noopener" target="_blank">United States</a>, professional, military, and commercial astronauts traveling above an altitude of 50 miles (80 km) are awarded astronaut wings.</p>
+<p>As of November 17, 2016, 552 people from 36 countries have reached an altitude of 100 km (62 miles) or more, of which 549 have reached low Earth orbit or more. Of these, 24 people traveled beyond the <a href="https://www.pngall.com/earth-png" title="Earth PNG Transparent Images" rel="noopener" target="_blank">Earth&#8217;s</a> low orbit or into lunar orbit, the surface of the Moon, or, in one case, circumnavigated the <a href="https://www.pngall.com/moon-png" title="Moon PNG Transparent Images" rel="noopener" target="_blank">Moon</a>. Three out of 24 &#8211; Jim Lovell, John Young, and Eugene Cernan &#8211; did it twice. </p>
+<!-- Quick Adsense WordPress Plugin: http://quickadsense.com/ -->
+<div class="7e5d63c6540feda5e227514ef81ca30a" data-index="2" style="float: none; margin:25px 0 25px 0; text-align:center;">
+<p><span style="font-size:0.8em">Advertisements</span><style type="text/css"> 
+.adslot_1 { max-width: 300px; height: auto; margin:10px 0px; }
+@media (min-width:125px) { .adslot_1 { width:125px; height:125px; } } 
+@media (min-width:180px) { .adslot_1 { width:180px; height:150px; } } 
+@media (min-width:200px) { .adslot_1 { width:200px; height:200px; } } 
+@media (min-width:250px) { .adslot_1 { width:250px; height:250px; } } 
+@media (min-width:300px) { .adslot_1 { width:300px; height:600px; } } 
+@media (min-width:336px) { .adslot_1 { width:336px; height:280px; } } 
+@media (min-width:468px) { .adslot_1 { width:468px; height:60px; } } 
+@media (min-width:728px) { .adslot_1 { width:728px; height:90px; } }
+</style>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- pngall link ads unit -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-8822717667672157"
+     data-ad-slot="5043863148"
+     data-ad-format="link"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+</div>
+
+<p>As of November 17, 2016, according to the US definition, 558 people are classified as reaching space more than 50 miles above 80 km above sea level. Of the eight X-15 pilots who exceed 50 miles (80 km), only one exceeds 100 kilometers (about 62 miles). Space travelers spent more than 41,790 man-days (114.5 man-years) in space, including more than 100 days of astronauts in space. According to data for 2016, Gennady Padalka, who spent 879 days in space, has the longest accumulation time in space. Peggy A. Whitson holds the record for the longest time a woman has spent in space &#8211; 377 days. </p>
+<p>In 1959, when the United States and the Soviet Union were planning but not yet launching humans into space, NASA Administrator T. Keith Glennan and his Deputy Administrator, Dr. Hugh Dryden, discussed whether the crew of the spacecraft should be called astronauts or cosmonauts, Dryden preferred. Astronauts &#8220;on the grounds that the flights would occur in space (close to space) and the&#8221; Astro &#8220;prefix assumes a flight to the stars. Most members of NASA&#8217;s space task force preferred the term &#8220;astronaut,&#8221; which has survived through common usage as the preferred American term. When the Soviet Union launched the first man, Yuri Gagarin, into space in 1961, they chose the term which anglicizes to &#8220;cosmonaut.&#8221;</p>
+<h3>Download Astronaut PNG images transparent gallery.</h3>
+
+		<style type="text/css">
+			#gallery-1 {
+				margin: auto;
+			}
+			#gallery-1 .gallery-item {
+				float: left;
+				margin-top: 10px;
+				text-align: center;
+				width: 33%;
+			}
+			#gallery-1 img {
+				border: 2px solid #cfcfcf;
+			}
+			#gallery-1 .gallery-caption {
+				margin-left: 0;
+			}
+			/* see gallery_shortcode() in wp-includes/media.php */
+		</style>
+		<div id='gallery-1' class='gallery galleryid-54005 gallery-columns-3 gallery-size-full'><dl class='gallery-item'>
+			<dt class='gallery-icon portrait'>
+				<a title="Astronaut Vector"  href='https://www.pngall.com/astronaut-png/download/55940'><div class="img_wrapper"><img width="860" height="1065" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20860%201065'%3E%3C/svg%3E" class="attachment-full size-full" alt="Astronaut Vector" data-lazy-src="https://www.pngall.com/wp-content/uploads/5/Astronaut-Vector.png" /><noscript><img width="860" height="1065" src="https://www.pngall.com/wp-content/uploads/5/Astronaut-Vector.png" class="attachment-full size-full" alt="Astronaut Vector" /></noscript></div></a>
+			</dt><strong><dd class="wp-caption-text gallery-caption">Astronaut Vector</strong><br>Resolution: 860 × 1065<br>Size: 516 KB<br>Image Format: .png<br><a href="https://www.pngall.com/astronaut-png/download/55940" target="blank" class="download">Download</a></dd></dl><dl class='gallery-item'>
+			<dt class='gallery-icon landscape'>
+				<a title="Astronaut"  href='https://www.pngall.com/astronaut-png/download/55944'><div class="img_wrapper"><img width="634" height="509" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20634%20509'%3E%3C/svg%3E" class="attachment-full size-full" alt="Astronaut" data-lazy-src="https://www.pngall.com/wp-content/uploads/5/Astronaut.png" /><noscript><img width="634" height="509" src="https://www.pngall.com/wp-content/uploads/5/Astronaut.png" class="attachment-full size-full" alt="Astronaut" /></noscript></div></a>
+			</dt><strong><dd class="wp-caption-text gallery-caption">Astronaut</strong><br>Resolution: 634 × 509<br>Size: 288 KB<br>Image Format: .png<br><a href="https://www.pngall.com/astronaut-png/download/55944" target="blank" class="download">Download</a></dd></dl><dl class='gallery-item'>
+			<dt class='gallery-icon portrait'>
+				<a title="Astronaut PNG Clipart"  href='https://www.pngall.com/astronaut-png/download/55947'><div class="img_wrapper"><img width="860" height="1171" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20860%201171'%3E%3C/svg%3E" class="attachment-full size-full" alt="Astronaut PNG Clipart" data-lazy-src="https://www.pngall.com/wp-content/uploads/5/Astronaut-PNG-Clipart.png" /><noscript><img width="860" height="1171" src="https://www.pngall.com/wp-content/uploads/5/Astronaut-PNG-Clipart.png" class="attachment-full size-full" alt="Astronaut PNG Clipart" /></noscript></div></a>
+			</dt><strong><dd class="wp-caption-text gallery-caption">Astronaut PNG Clipart</strong><br>Resolution: 860 × 1171<br>Size: 484 KB<br>Image Format: .png<br><a href="https://www.pngall.com/astronaut-png/download/55947" target="blank" class="download">Download</a></dd></dl><br style="clear: both" /><dl class='gallery-item'>
+			<dt class='gallery-icon landscape'>
+				<a title="Astronaut PNG Download Image"  href='https://www.pngall.com/astronaut-png/download/55949'><div class="img_wrapper"><img width="1000" height="750" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201000%20750'%3E%3C/svg%3E" class="attachment-full size-full" alt="Astronaut PNG Download Image" data-lazy-src="https://www.pngall.com/wp-content/uploads/5/Astronaut-PNG-Download-Image.png" /><noscript><img width="1000" height="750" src="https://www.pngall.com/wp-content/uploads/5/Astronaut-PNG-Download-Image.png" class="attachment-full size-full" alt="Astronaut PNG Download Image" /></noscript></div></a>
+			</dt><strong><dd class="wp-caption-text gallery-caption">Astronaut PNG Download Image</strong><br>Resolution: 1000 × 750<br>Size: 269 KB<br>Image Format: .png<br><a href="https://www.pngall.com/astronaut-png/download/55949" target="blank" class="download">Download</a></dd></dl><dl class='gallery-item'>
+			<dt class='gallery-icon portrait'>
+				<a title="Astronaut PNG File"  href='https://www.pngall.com/astronaut-png/download/55951'><div class="img_wrapper"><img width="521" height="751" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20521%20751'%3E%3C/svg%3E" class="attachment-full size-full" alt="Astronaut PNG File" data-lazy-src="https://www.pngall.com/wp-content/uploads/5/Astronaut-PNG-File.png" /><noscript><img width="521" height="751" src="https://www.pngall.com/wp-content/uploads/5/Astronaut-PNG-File.png" class="attachment-full size-full" alt="Astronaut PNG File" /></noscript></div></a>
+			</dt><strong><dd class="wp-caption-text gallery-caption">Astronaut PNG File</strong><br>Resolution: 521 × 751<br>Size: 376 KB<br>Image Format: .png<br><a href="https://www.pngall.com/astronaut-png/download/55951" target="blank" class="download">Download</a></dd></dl><dl class='gallery-item'>
+			<dt class='gallery-icon portrait'>
+				<a title="Astronaut PNG Free Download"  href='https://www.pngall.com/astronaut-png/download/55954'><div class="img_wrapper"><img width="549" height="735" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20549%20735'%3E%3C/svg%3E" class="attachment-full size-full" alt="Astronaut PNG Free Download" data-lazy-src="https://www.pngall.com/wp-content/uploads/5/Astronaut-PNG-Free-Download.png" /><noscript><img width="549" height="735" src="https://www.pngall.com/wp-content/uploads/5/Astronaut-PNG-Free-Download.png" class="attachment-full size-full" alt="Astronaut PNG Free Download" /></noscript></div></a>
+			</dt><strong><dd class="wp-caption-text gallery-caption">Astronaut PNG Free Download</strong><br>Resolution: 549 × 735<br>Size: 245 KB<br>Image Format: .png<br><a href="https://www.pngall.com/astronaut-png/download/55954" target="blank" class="download">Download</a></dd></dl><br style="clear: both" /><dl class='gallery-item'>
+			<dt class='gallery-icon portrait'>
+				<a title="Astronaut PNG Free Image"  href='https://www.pngall.com/astronaut-png/download/55956'><div class="img_wrapper"><img width="480" height="610" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20480%20610'%3E%3C/svg%3E" class="attachment-full size-full" alt="Astronaut PNG Free Image" data-lazy-src="https://www.pngall.com/wp-content/uploads/5/Astronaut-PNG-Free-Image.png" /><noscript><img width="480" height="610" src="https://www.pngall.com/wp-content/uploads/5/Astronaut-PNG-Free-Image.png" class="attachment-full size-full" alt="Astronaut PNG Free Image" /></noscript></div></a>
+			</dt><strong><dd class="wp-caption-text gallery-caption">Astronaut PNG Free Image</strong><br>Resolution: 480 × 610<br>Size: 78 KB<br>Image Format: .png<br><a href="https://www.pngall.com/astronaut-png/download/55956" target="blank" class="download">Download</a></dd></dl><dl class='gallery-item'>
+			<dt class='gallery-icon portrait'>
+				<a title="Astronaut PNG HD Image"  href='https://www.pngall.com/astronaut-png/download/55960'><div class="img_wrapper"><img width="2077" height="2388" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%202077%202388'%3E%3C/svg%3E" class="attachment-full size-full" alt="Astronaut PNG HD Image" data-lazy-src="https://www.pngall.com/wp-content/uploads/5/Astronaut-PNG-HD-Image.png" /><noscript><img width="2077" height="2388" src="https://www.pngall.com/wp-content/uploads/5/Astronaut-PNG-HD-Image.png" class="attachment-full size-full" alt="Astronaut PNG HD Image" /></noscript></div></a>
+			</dt><strong><dd class="wp-caption-text gallery-caption">Astronaut PNG HD Image</strong><br>Resolution: 2077 × 2388<br>Size: 1700 KB<br>Image Format: .png<br><a href="https://www.pngall.com/astronaut-png/download/55960" target="blank" class="download">Download</a></dd></dl><dl class='gallery-item'>
+			<dt class='gallery-icon portrait'>
+				<a title="Astronaut PNG High Quality Image"  href='https://www.pngall.com/astronaut-png/download/55964'><div class="img_wrapper"><img width="706" height="786" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20706%20786'%3E%3C/svg%3E" class="attachment-full size-full" alt="Astronaut PNG High Quality Image" data-lazy-src="https://www.pngall.com/wp-content/uploads/5/Astronaut-PNG-High-Quality-Image.png" /><noscript><img width="706" height="786" src="https://www.pngall.com/wp-content/uploads/5/Astronaut-PNG-High-Quality-Image.png" class="attachment-full size-full" alt="Astronaut PNG High Quality Image" /></noscript></div></a>
+			</dt><strong><dd class="wp-caption-text gallery-caption">Astronaut PNG High Quality Image</strong><br>Resolution: 706 × 786<br>Size: 752 KB<br>Image Format: .png<br><a href="https://www.pngall.com/astronaut-png/download/55964" target="blank" class="download">Download</a></dd></dl><br style="clear: both" /><dl class='gallery-item'>
+			<dt class='gallery-icon portrait'>
+				<a title="Astronaut PNG Image File"  href='https://www.pngall.com/astronaut-png/download/55966'><div class="img_wrapper"><img width="746" height="771" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20746%20771'%3E%3C/svg%3E" class="attachment-full size-full" alt="Astronaut PNG Image File" data-lazy-src="https://www.pngall.com/wp-content/uploads/5/Astronaut-PNG-Image-File.png" /><noscript><img width="746" height="771" src="https://www.pngall.com/wp-content/uploads/5/Astronaut-PNG-Image-File.png" class="attachment-full size-full" alt="Astronaut PNG Image File" /></noscript></div></a>
+			</dt><strong><dd class="wp-caption-text gallery-caption">Astronaut PNG Image File</strong><br>Resolution: 746 × 771<br>Size: 706 KB<br>Image Format: .png<br><a href="https://www.pngall.com/astronaut-png/download/55966" target="blank" class="download">Download</a></dd></dl><dl class='gallery-item'>
+			<dt class='gallery-icon portrait'>
+				<a title="Astronaut PNG Image HD"  href='https://www.pngall.com/astronaut-png/download/55970'><div class="img_wrapper"><img width="277" height="802" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20277%20802'%3E%3C/svg%3E" class="attachment-full size-full" alt="Astronaut PNG Image HD" data-lazy-src="https://www.pngall.com/wp-content/uploads/5/Astronaut-PNG-Image-HD.png" /><noscript><img width="277" height="802" src="https://www.pngall.com/wp-content/uploads/5/Astronaut-PNG-Image-HD.png" class="attachment-full size-full" alt="Astronaut PNG Image HD" /></noscript></div></a>
+			</dt><strong><dd class="wp-caption-text gallery-caption">Astronaut PNG Image HD</strong><br>Resolution: 277 × 802<br>Size: 136 KB<br>Image Format: .png<br><a href="https://www.pngall.com/astronaut-png/download/55970" target="blank" class="download">Download</a></dd></dl><dl class='gallery-item'>
+			<dt class='gallery-icon portrait'>
+				<a title="Astronaut PNG Images"  href='https://www.pngall.com/astronaut-png/download/55973'><div class="img_wrapper"><img width="600" height="640" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20600%20640'%3E%3C/svg%3E" class="attachment-full size-full" alt="Astronaut PNG Images" data-lazy-src="https://www.pngall.com/wp-content/uploads/5/Astronaut-PNG-Images.png" /><noscript><img width="600" height="640" src="https://www.pngall.com/wp-content/uploads/5/Astronaut-PNG-Images.png" class="attachment-full size-full" alt="Astronaut PNG Images" /></noscript></div></a>
+			</dt><strong><dd class="wp-caption-text gallery-caption">Astronaut PNG Images</strong><br>Resolution: 600 × 640<br>Size: 417 KB<br>Image Format: .png<br><a href="https://www.pngall.com/astronaut-png/download/55973" target="blank" class="download">Download</a></dd></dl><br style="clear: both" /><dl class='gallery-item'>
+			<dt class='gallery-icon portrait'>
+				<a title="Astronaut PNG Photo"  href='https://www.pngall.com/astronaut-png/download/55976'><div class="img_wrapper"><img width="642" height="1243" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20642%201243'%3E%3C/svg%3E" class="attachment-full size-full" alt="Astronaut PNG Photo" data-lazy-src="https://www.pngall.com/wp-content/uploads/5/Astronaut-PNG-Photo.png" /><noscript><img width="642" height="1243" src="https://www.pngall.com/wp-content/uploads/5/Astronaut-PNG-Photo.png" class="attachment-full size-full" alt="Astronaut PNG Photo" /></noscript></div></a>
+			</dt><strong><dd class="wp-caption-text gallery-caption">Astronaut PNG Photo</strong><br>Resolution: 642 × 1243<br>Size: 757 KB<br>Image Format: .png<br><a href="https://www.pngall.com/astronaut-png/download/55976" target="blank" class="download">Download</a></dd></dl><dl class='gallery-item'>
+			<dt class='gallery-icon portrait'>
+				<a title="Astronaut PNG Pic"  href='https://www.pngall.com/astronaut-png/download/55980'><div class="img_wrapper"><img width="800" height="1493" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20800%201493'%3E%3C/svg%3E" class="attachment-full size-full" alt="Astronaut PNG Pic" data-lazy-src="https://www.pngall.com/wp-content/uploads/5/Astronaut-PNG-Pic.png" /><noscript><img width="800" height="1493" src="https://www.pngall.com/wp-content/uploads/5/Astronaut-PNG-Pic.png" class="attachment-full size-full" alt="Astronaut PNG Pic" /></noscript></div></a>
+			</dt><strong><dd class="wp-caption-text gallery-caption">Astronaut PNG Pic</strong><br>Resolution: 800 × 1493<br>Size: 1042 KB<br>Image Format: .png<br><a href="https://www.pngall.com/astronaut-png/download/55980" target="blank" class="download">Download</a></dd></dl><dl class='gallery-item'>
+			<dt class='gallery-icon landscape'>
+				<a title="Astronaut PNG Picture"  href='https://www.pngall.com/astronaut-png/download/55984'><div class="img_wrapper"><img width="900" height="564" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20900%20564'%3E%3C/svg%3E" class="attachment-full size-full" alt="Astronaut PNG Picture" data-lazy-src="https://www.pngall.com/wp-content/uploads/5/Astronaut-PNG-Picture.png" /><noscript><img width="900" height="564" src="https://www.pngall.com/wp-content/uploads/5/Astronaut-PNG-Picture.png" class="attachment-full size-full" alt="Astronaut PNG Picture" /></noscript></div></a>
+			</dt><strong><dd class="wp-caption-text gallery-caption">Astronaut PNG Picture</strong><br>Resolution: 900 × 564<br>Size: 256 KB<br>Image Format: .png<br><a href="https://www.pngall.com/astronaut-png/download/55984" target="blank" class="download">Download</a></dd></dl><br style="clear: both" /><dl class='gallery-item'>
+			<dt class='gallery-icon portrait'>
+				<a title="Astronaut PNG"  href='https://www.pngall.com/astronaut-png/download/55988'><div class="img_wrapper"><img width="357" height="534" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20357%20534'%3E%3C/svg%3E" class="attachment-full size-full" alt="Astronaut PNG" data-lazy-src="https://www.pngall.com/wp-content/uploads/5/Astronaut-PNG.png" /><noscript><img width="357" height="534" src="https://www.pngall.com/wp-content/uploads/5/Astronaut-PNG.png" class="attachment-full size-full" alt="Astronaut PNG" /></noscript></div></a>
+			</dt><strong><dd class="wp-caption-text gallery-caption">Astronaut PNG</strong><br>Resolution: 357 × 534<br>Size: 149 KB<br>Image Format: .png<br><a href="https://www.pngall.com/astronaut-png/download/55988" target="blank" class="download">Download</a></dd></dl><dl class='gallery-item'>
+			<dt class='gallery-icon landscape'>
+				<a title="Astronaut Space PNG Clipart"  href='https://www.pngall.com/astronaut-png/download/55990'><div class="img_wrapper"><img width="586" height="293" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20586%20293'%3E%3C/svg%3E" class="attachment-full size-full" alt="Astronaut Space PNG Clipart" data-lazy-src="https://www.pngall.com/wp-content/uploads/5/Astronaut-Space-PNG-Clipart.png" /><noscript><img width="586" height="293" src="https://www.pngall.com/wp-content/uploads/5/Astronaut-Space-PNG-Clipart.png" class="attachment-full size-full" alt="Astronaut Space PNG Clipart" /></noscript></div></a>
+			</dt><strong><dd class="wp-caption-text gallery-caption">Astronaut Space PNG Clipart</strong><br>Resolution: 586 × 293<br>Size: 163 KB<br>Image Format: .png<br><a href="https://www.pngall.com/astronaut-png/download/55990" target="blank" class="download">Download</a></dd></dl><dl class='gallery-item'>
+			<dt class='gallery-icon portrait'>
+				<a title="Astronaut Space PNG Download Image"  href='https://www.pngall.com/astronaut-png/download/55996'><div class="img_wrapper"><img width="2435" height="3444" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%202435%203444'%3E%3C/svg%3E" class="attachment-full size-full" alt="Astronaut Space PNG Download Image" data-lazy-src="https://www.pngall.com/wp-content/uploads/5/Astronaut-Space-PNG-Download-Image.png" /><noscript><img width="2435" height="3444" src="https://www.pngall.com/wp-content/uploads/5/Astronaut-Space-PNG-Download-Image.png" class="attachment-full size-full" alt="Astronaut Space PNG Download Image" /></noscript></div></a>
+			</dt><strong><dd class="wp-caption-text gallery-caption">Astronaut Space PNG Download Image</strong><br>Resolution: 2435 × 3444<br>Size: 2952 KB<br>Image Format: .png<br><a href="https://www.pngall.com/astronaut-png/download/55996" target="blank" class="download">Download</a></dd></dl><br style="clear: both" /><dl class='gallery-item'>
+			<dt class='gallery-icon portrait'>
+				<a title="Astronaut Space PNG File Download Free"  href='https://www.pngall.com/astronaut-png/download/55999'><div class="img_wrapper"><img width="800" height="1036" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20800%201036'%3E%3C/svg%3E" class="attachment-full size-full" alt="Astronaut Space PNG File Download Free" data-lazy-src="https://www.pngall.com/wp-content/uploads/5/Astronaut-Space-PNG-File-Download-Free.png" /><noscript><img width="800" height="1036" src="https://www.pngall.com/wp-content/uploads/5/Astronaut-Space-PNG-File-Download-Free.png" class="attachment-full size-full" alt="Astronaut Space PNG File Download Free" /></noscript></div></a>
+			</dt><strong><dd class="wp-caption-text gallery-caption">Astronaut Space PNG File Download Free</strong><br>Resolution: 800 × 1036<br>Size: 359 KB<br>Image Format: .png<br><a href="https://www.pngall.com/astronaut-png/download/55999" target="blank" class="download">Download</a></dd></dl><dl class='gallery-item'>
+			<dt class='gallery-icon portrait'>
+				<a title="Astronaut Space PNG File"  href='https://www.pngall.com/astronaut-png/download/56001'><div class="img_wrapper"><img width="498" height="539" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20498%20539'%3E%3C/svg%3E" class="attachment-full size-full" alt="Astronaut Space PNG File" data-lazy-src="https://www.pngall.com/wp-content/uploads/5/Astronaut-Space-PNG-File.png" /><noscript><img width="498" height="539" src="https://www.pngall.com/wp-content/uploads/5/Astronaut-Space-PNG-File.png" class="attachment-full size-full" alt="Astronaut Space PNG File" /></noscript></div></a>
+			</dt><strong><dd class="wp-caption-text gallery-caption">Astronaut Space PNG File</strong><br>Resolution: 498 × 539<br>Size: 439 KB<br>Image Format: .png<br><a href="https://www.pngall.com/astronaut-png/download/56001" target="blank" class="download">Download</a></dd></dl><dl class='gallery-item'>
+			<dt class='gallery-icon portrait'>
+				<a title="Astronaut Space PNG Free Download"  href='https://www.pngall.com/astronaut-png/download/56006'><div class="img_wrapper"><img width="1024" height="1536" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201024%201536'%3E%3C/svg%3E" class="attachment-full size-full" alt="Astronaut Space PNG Free Download" data-lazy-src="https://www.pngall.com/wp-content/uploads/5/Astronaut-Space-PNG-Free-Download.png" /><noscript><img width="1024" height="1536" src="https://www.pngall.com/wp-content/uploads/5/Astronaut-Space-PNG-Free-Download.png" class="attachment-full size-full" alt="Astronaut Space PNG Free Download" /></noscript></div></a>
+			</dt><strong><dd class="wp-caption-text gallery-caption">Astronaut Space PNG Free Download</strong><br>Resolution: 1024 × 1536<br>Size: 1052 KB<br>Image Format: .png<br><a href="https://www.pngall.com/astronaut-png/download/56006" target="blank" class="download">Download</a></dd></dl><br style="clear: both" /><dl class='gallery-item'>
+			<dt class='gallery-icon portrait'>
+				<a title="Astronaut Space PNG Free Image"  href='https://www.pngall.com/astronaut-png/download/56009'><div class="img_wrapper"><img width="415" height="420" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20415%20420'%3E%3C/svg%3E" class="attachment-full size-full" alt="Astronaut Space PNG Free Image" data-lazy-src="https://www.pngall.com/wp-content/uploads/5/Astronaut-Space-PNG-Free-Image.png" /><noscript><img width="415" height="420" src="https://www.pngall.com/wp-content/uploads/5/Astronaut-Space-PNG-Free-Image.png" class="attachment-full size-full" alt="Astronaut Space PNG Free Image" /></noscript></div></a>
+			</dt><strong><dd class="wp-caption-text gallery-caption">Astronaut Space PNG Free Image</strong><br>Resolution: 415 × 420<br>Size: 221 KB<br>Image Format: .png<br><a href="https://www.pngall.com/astronaut-png/download/56009" target="blank" class="download">Download</a></dd></dl><dl class='gallery-item'>
+			<dt class='gallery-icon portrait'>
+				<a title="Astronaut Space PNG HD Image"  href='https://www.pngall.com/astronaut-png/download/56012'><div class="img_wrapper"><img width="328" height="450" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20328%20450'%3E%3C/svg%3E" class="attachment-full size-full" alt="Astronaut Space PNG HD Image" data-lazy-src="https://www.pngall.com/wp-content/uploads/5/Astronaut-Space-PNG-HD-Image.png" /><noscript><img width="328" height="450" src="https://www.pngall.com/wp-content/uploads/5/Astronaut-Space-PNG-HD-Image.png" class="attachment-full size-full" alt="Astronaut Space PNG HD Image" /></noscript></div></a>
+			</dt><strong><dd class="wp-caption-text gallery-caption">Astronaut Space PNG HD Image</strong><br>Resolution: 328 × 450<br>Size: 185 KB<br>Image Format: .png<br><a href="https://www.pngall.com/astronaut-png/download/56012" target="blank" class="download">Download</a></dd></dl><dl class='gallery-item'>
+			<dt class='gallery-icon portrait'>
+				<a title="Astronaut Space PNG High Quality Image"  href='https://www.pngall.com/astronaut-png/download/56015'><div class="img_wrapper"><img width="689" height="731" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20689%20731'%3E%3C/svg%3E" class="attachment-full size-full" alt="Astronaut Space PNG High Quality Image" data-lazy-src="https://www.pngall.com/wp-content/uploads/5/Astronaut-Space-PNG-High-Quality-Image.png" /><noscript><img width="689" height="731" src="https://www.pngall.com/wp-content/uploads/5/Astronaut-Space-PNG-High-Quality-Image.png" class="attachment-full size-full" alt="Astronaut Space PNG High Quality Image" /></noscript></div></a>
+			</dt><strong><dd class="wp-caption-text gallery-caption">Astronaut Space PNG High Quality Image</strong><br>Resolution: 689 × 731<br>Size: 635 KB<br>Image Format: .png<br><a href="https://www.pngall.com/astronaut-png/download/56015" target="blank" class="download">Download</a></dd></dl><br style="clear: both" /><dl class='gallery-item'>
+			<dt class='gallery-icon landscape'>
+				<a title="Astronaut Space PNG Image File"  href='https://www.pngall.com/astronaut-png/download/56019'><div class="img_wrapper"><img width="1921" height="996" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201921%20996'%3E%3C/svg%3E" class="attachment-full size-full" alt="Astronaut Space PNG Image File" data-lazy-src="https://www.pngall.com/wp-content/uploads/5/Astronaut-Space-PNG-Image-File.png" /><noscript><img width="1921" height="996" src="https://www.pngall.com/wp-content/uploads/5/Astronaut-Space-PNG-Image-File.png" class="attachment-full size-full" alt="Astronaut Space PNG Image File" /></noscript></div></a>
+			</dt><strong><dd class="wp-caption-text gallery-caption">Astronaut Space PNG Image File</strong><br>Resolution: 1921 × 996<br>Size: 940 KB<br>Image Format: .png<br><a href="https://www.pngall.com/astronaut-png/download/56019" target="blank" class="download">Download</a></dd></dl><dl class='gallery-item'>
+			<dt class='gallery-icon landscape'>
+				<a title="Astronaut Space PNG Image HD"  href='https://www.pngall.com/astronaut-png/download/56037'><div class="img_wrapper"><img width="1936" height="925" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201936%20925'%3E%3C/svg%3E" class="attachment-full size-full" alt="Astronaut Space PNG Image HD" data-lazy-src="https://www.pngall.com/wp-content/uploads/5/Astronaut-Space-PNG-Image-HD.png" /><noscript><img width="1936" height="925" src="https://www.pngall.com/wp-content/uploads/5/Astronaut-Space-PNG-Image-HD.png" class="attachment-full size-full" alt="Astronaut Space PNG Image HD" /></noscript></div></a>
+			</dt><strong><dd class="wp-caption-text gallery-caption">Astronaut Space PNG Image HD</strong><br>Resolution: 1936 × 925<br>Size: 2477 KB<br>Image Format: .png<br><a href="https://www.pngall.com/astronaut-png/download/56037" target="blank" class="download">Download</a></dd></dl><dl class='gallery-item'>
+			<dt class='gallery-icon portrait'>
+				<a title="Astronaut Space PNG Image"  href='https://www.pngall.com/astronaut-png/download/56040'><div class="img_wrapper"><img width="460" height="798" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20460%20798'%3E%3C/svg%3E" class="attachment-full size-full" alt="Astronaut Space PNG Image" data-lazy-src="https://www.pngall.com/wp-content/uploads/5/Astronaut-Space-PNG-Image.png" /><noscript><img width="460" height="798" src="https://www.pngall.com/wp-content/uploads/5/Astronaut-Space-PNG-Image.png" class="attachment-full size-full" alt="Astronaut Space PNG Image" /></noscript></div></a>
+			</dt><strong><dd class="wp-caption-text gallery-caption">Astronaut Space PNG Image</strong><br>Resolution: 460 × 798<br>Size: 229 KB<br>Image Format: .png<br><a href="https://www.pngall.com/astronaut-png/download/56040" target="blank" class="download">Download</a></dd></dl><br style="clear: both" /><dl class='gallery-item'>
+			<dt class='gallery-icon portrait'>
+				<a title="Astronaut Space PNG Images"  href='https://www.pngall.com/astronaut-png/download/56042'><div class="img_wrapper"><img width="854" height="877" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20854%20877'%3E%3C/svg%3E" class="attachment-full size-full" alt="Astronaut Space PNG Images" data-lazy-src="https://www.pngall.com/wp-content/uploads/5/Astronaut-Space-PNG-Images.png" /><noscript><img width="854" height="877" src="https://www.pngall.com/wp-content/uploads/5/Astronaut-Space-PNG-Images.png" class="attachment-full size-full" alt="Astronaut Space PNG Images" /></noscript></div></a>
+			</dt><strong><dd class="wp-caption-text gallery-caption">Astronaut Space PNG Images</strong><br>Resolution: 854 × 877<br>Size: 924 KB<br>Image Format: .png<br><a href="https://www.pngall.com/astronaut-png/download/56042" target="blank" class="download">Download</a></dd></dl><dl class='gallery-item'>
+			<dt class='gallery-icon portrait'>
+				<a title="Astronaut Space PNG Photo"  href='https://www.pngall.com/astronaut-png/download/56048'><div class="img_wrapper"><img width="1119" height="1280" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201119%201280'%3E%3C/svg%3E" class="attachment-full size-full" alt="Astronaut Space PNG Photo" data-lazy-src="https://www.pngall.com/wp-content/uploads/5/Astronaut-Space-PNG-Photo.png" /><noscript><img width="1119" height="1280" src="https://www.pngall.com/wp-content/uploads/5/Astronaut-Space-PNG-Photo.png" class="attachment-full size-full" alt="Astronaut Space PNG Photo" /></noscript></div></a>
+			</dt><strong><dd class="wp-caption-text gallery-caption">Astronaut Space PNG Photo</strong><br>Resolution: 1119 × 1280<br>Size: 933 KB<br>Image Format: .png<br><a href="https://www.pngall.com/astronaut-png/download/56048" target="blank" class="download">Download</a></dd></dl><dl class='gallery-item'>
+			<dt class='gallery-icon portrait'>
+				<a title="Astronaut Space PNG Pic"  href='https://www.pngall.com/astronaut-png/download/56052'><div class="img_wrapper"><img width="431" height="666" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20431%20666'%3E%3C/svg%3E" class="attachment-full size-full" alt="Astronaut Space PNG Pic" data-lazy-src="https://www.pngall.com/wp-content/uploads/5/Astronaut-Space-PNG-Pic.png" /><noscript><img width="431" height="666" src="https://www.pngall.com/wp-content/uploads/5/Astronaut-Space-PNG-Pic.png" class="attachment-full size-full" alt="Astronaut Space PNG Pic" /></noscript></div></a>
+			</dt><strong><dd class="wp-caption-text gallery-caption">Astronaut Space PNG Pic</strong><br>Resolution: 431 × 666<br>Size: 349 KB<br>Image Format: .png<br><a href="https://www.pngall.com/astronaut-png/download/56052" target="blank" class="download">Download</a></dd></dl><br style="clear: both" /><dl class='gallery-item'>
+			<dt class='gallery-icon landscape'>
+				<a title="Astronaut Space PNG Picture"  href='https://www.pngall.com/astronaut-png/download/56056'><div class="img_wrapper"><img width="640" height="640" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20640%20640'%3E%3C/svg%3E" class="attachment-full size-full" alt="Astronaut Space PNG Picture" data-lazy-src="https://www.pngall.com/wp-content/uploads/5/Astronaut-Space-PNG-Picture.png" /><noscript><img width="640" height="640" src="https://www.pngall.com/wp-content/uploads/5/Astronaut-Space-PNG-Picture.png" class="attachment-full size-full" alt="Astronaut Space PNG Picture" /></noscript></div></a>
+			</dt><strong><dd class="wp-caption-text gallery-caption">Astronaut Space PNG Picture</strong><br>Resolution: 640 × 640<br>Size: 249 KB<br>Image Format: .png<br><a href="https://www.pngall.com/astronaut-png/download/56056" target="blank" class="download">Download</a></dd></dl><dl class='gallery-item'>
+			<dt class='gallery-icon landscape'>
+				<a title="Astronaut Space PNG Transparent HD Photo"  href='https://www.pngall.com/astronaut-png/download/56060'><div class="img_wrapper"><img width="960" height="720" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20960%20720'%3E%3C/svg%3E" class="attachment-full size-full" alt="Astronaut Space PNG Transparent HD Photo" data-lazy-src="https://www.pngall.com/wp-content/uploads/5/Astronaut-Space-PNG-Transparent-HD-Photo.png" /><noscript><img width="960" height="720" src="https://www.pngall.com/wp-content/uploads/5/Astronaut-Space-PNG-Transparent-HD-Photo.png" class="attachment-full size-full" alt="Astronaut Space PNG Transparent HD Photo" /></noscript></div></a>
+			</dt><strong><dd class="wp-caption-text gallery-caption">Astronaut Space PNG Transparent HD Photo</strong><br>Resolution: 960 × 720<br>Size: 490 KB<br>Image Format: .png<br><a href="https://www.pngall.com/astronaut-png/download/56060" target="blank" class="download">Download</a></dd></dl><dl class='gallery-item'>
+			<dt class='gallery-icon portrait'>
+				<a title="Astronaut Space PNG"  href='https://www.pngall.com/astronaut-png/download/56068'><div class="img_wrapper"><img width="762" height="1385" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20762%201385'%3E%3C/svg%3E" class="attachment-full size-full" alt="Astronaut Space PNG" data-lazy-src="https://www.pngall.com/wp-content/uploads/5/Astronaut-Space-PNG.png" /><noscript><img width="762" height="1385" src="https://www.pngall.com/wp-content/uploads/5/Astronaut-Space-PNG.png" class="attachment-full size-full" alt="Astronaut Space PNG" /></noscript></div></a>
+			</dt><strong><dd class="wp-caption-text gallery-caption">Astronaut Space PNG</strong><br>Resolution: 762 × 1385<br>Size: 1005 KB<br>Image Format: .png<br><a href="https://www.pngall.com/astronaut-png/download/56068" target="blank" class="download">Download</a></dd></dl><br style="clear: both" /><dl class='gallery-item'>
+			<dt class='gallery-icon portrait'>
+				<a title="Astronaut Space Transparent"  href='https://www.pngall.com/astronaut-png/download/56079'><div class="img_wrapper"><img width="1220" height="1642" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201220%201642'%3E%3C/svg%3E" class="attachment-full size-full" alt="Astronaut Space Transparent" data-lazy-src="https://www.pngall.com/wp-content/uploads/5/Astronaut-Space-Transparent.png" /><noscript><img width="1220" height="1642" src="https://www.pngall.com/wp-content/uploads/5/Astronaut-Space-Transparent.png" class="attachment-full size-full" alt="Astronaut Space Transparent" /></noscript></div></a>
+			</dt><strong><dd class="wp-caption-text gallery-caption">Astronaut Space Transparent</strong><br>Resolution: 1220 × 1642<br>Size: 2056 KB<br>Image Format: .png<br><a href="https://www.pngall.com/astronaut-png/download/56079" target="blank" class="download">Download</a></dd></dl><dl class='gallery-item'>
+			<dt class='gallery-icon landscape'>
+				<a title="Astronaut Space"  href='https://www.pngall.com/astronaut-png/download/56081'><div class="img_wrapper"><img width="590" height="520" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20590%20520'%3E%3C/svg%3E" class="attachment-full size-full" alt="Astronaut Space" data-lazy-src="https://www.pngall.com/wp-content/uploads/5/Astronaut-Space.png" /><noscript><img width="590" height="520" src="https://www.pngall.com/wp-content/uploads/5/Astronaut-Space.png" class="attachment-full size-full" alt="Astronaut Space" /></noscript></div></a>
+			</dt><strong><dd class="wp-caption-text gallery-caption">Astronaut Space</strong><br>Resolution: 590 × 520<br>Size: 252 KB<br>Image Format: .png<br><a href="https://www.pngall.com/astronaut-png/download/56081" target="blank" class="download">Download</a></dd></dl><dl class='gallery-item'>
+			<dt class='gallery-icon portrait'>
+				<a title="Astronaut Vector PNG Clipart"  href='https://www.pngall.com/astronaut-png/download/56086'><div class="img_wrapper"><img width="939" height="1106" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20939%201106'%3E%3C/svg%3E" class="attachment-full size-full" alt="Astronaut Vector PNG Clipart" data-lazy-src="https://www.pngall.com/wp-content/uploads/5/Astronaut-Vector-PNG-Clipart.png" /><noscript><img width="939" height="1106" src="https://www.pngall.com/wp-content/uploads/5/Astronaut-Vector-PNG-Clipart.png" class="attachment-full size-full" alt="Astronaut Vector PNG Clipart" /></noscript></div></a>
+			</dt><strong><dd class="wp-caption-text gallery-caption">Astronaut Vector PNG Clipart</strong><br>Resolution: 939 × 1106<br>Size: 376 KB<br>Image Format: .png<br><a href="https://www.pngall.com/astronaut-png/download/56086" target="blank" class="download">Download</a></dd></dl><br style="clear: both" /><dl class='gallery-item'>
+			<dt class='gallery-icon portrait'>
+				<a title="Astronaut Vector PNG Free Download"  href='https://www.pngall.com/astronaut-png/download/56092'><div class="img_wrapper"><img width="564" height="845" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20564%20845'%3E%3C/svg%3E" class="attachment-full size-full" alt="Astronaut Vector PNG Free Download" data-lazy-src="https://www.pngall.com/wp-content/uploads/5/Astronaut-Vector-PNG-Free-Download.png" /><noscript><img width="564" height="845" src="https://www.pngall.com/wp-content/uploads/5/Astronaut-Vector-PNG-Free-Download.png" class="attachment-full size-full" alt="Astronaut Vector PNG Free Download" /></noscript></div></a>
+			</dt><strong><dd class="wp-caption-text gallery-caption">Astronaut Vector PNG Free Download</strong><br>Resolution: 564 × 845<br>Size: 273 KB<br>Image Format: .png<br><a href="https://www.pngall.com/astronaut-png/download/56092" target="blank" class="download">Download</a></dd></dl><dl class='gallery-item'>
+			<dt class='gallery-icon landscape'>
+				<a title="Astronaut Vector PNG Image"  href='https://www.pngall.com/astronaut-png/download/56102'><div class="img_wrapper"><img width="1454" height="1403" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201454%201403'%3E%3C/svg%3E" class="attachment-full size-full" alt="Astronaut Vector PNG Image" data-lazy-src="https://www.pngall.com/wp-content/uploads/5/Astronaut-Vector-PNG-Image.png" /><noscript><img width="1454" height="1403" src="https://www.pngall.com/wp-content/uploads/5/Astronaut-Vector-PNG-Image.png" class="attachment-full size-full" alt="Astronaut Vector PNG Image" /></noscript></div></a>
+			</dt><strong><dd class="wp-caption-text gallery-caption">Astronaut Vector PNG Image</strong><br>Resolution: 1454 × 1403<br>Size: 536 KB<br>Image Format: .png<br><a href="https://www.pngall.com/astronaut-png/download/56102" target="blank" class="download">Download</a></dd></dl><dl class='gallery-item'>
+			<dt class='gallery-icon portrait'>
+				<a title="Astronaut Vector PNG Picture"  href='https://www.pngall.com/astronaut-png/download/56107'><div class="img_wrapper"><img width="700" height="711" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20700%20711'%3E%3C/svg%3E" class="attachment-full size-full" alt="Astronaut Vector PNG Picture" data-lazy-src="https://www.pngall.com/wp-content/uploads/5/Astronaut-Vector-PNG-Picture.png" /><noscript><img width="700" height="711" src="https://www.pngall.com/wp-content/uploads/5/Astronaut-Vector-PNG-Picture.png" class="attachment-full size-full" alt="Astronaut Vector PNG Picture" /></noscript></div></a>
+			</dt><strong><dd class="wp-caption-text gallery-caption">Astronaut Vector PNG Picture</strong><br>Resolution: 700 × 711<br>Size: 300 KB<br>Image Format: .png<br><a href="https://www.pngall.com/astronaut-png/download/56107" target="blank" class="download">Download</a></dd></dl><br style="clear: both" /><dl class='gallery-item'>
+			<dt class='gallery-icon portrait'>
+				<a title="Astronaut Vector PNG"  href='https://www.pngall.com/astronaut-png/download/56112'><div class="img_wrapper"><img width="552" height="694" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20552%20694'%3E%3C/svg%3E" class="attachment-full size-full" alt="Astronaut Vector PNG" data-lazy-src="https://www.pngall.com/wp-content/uploads/5/Astronaut-Vector-PNG.png" /><noscript><img width="552" height="694" src="https://www.pngall.com/wp-content/uploads/5/Astronaut-Vector-PNG.png" class="attachment-full size-full" alt="Astronaut Vector PNG" /></noscript></div></a>
+			</dt><strong><dd class="wp-caption-text gallery-caption">Astronaut Vector PNG</strong><br>Resolution: 552 × 694<br>Size: 412 KB<br>Image Format: .png<br><a href="https://www.pngall.com/astronaut-png/download/56112" target="blank" class="download">Download</a></dd></dl><dl class='gallery-item'>
+			<dt class='gallery-icon portrait'>
+				<a title="Astronaut Vector Transparent"  href='https://www.pngall.com/astronaut-png/download/56116'><div class="img_wrapper"><img width="589" height="623" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20589%20623'%3E%3C/svg%3E" class="attachment-full size-full" alt="Astronaut Vector Transparent" data-lazy-src="https://www.pngall.com/wp-content/uploads/5/Astronaut-Vector-Transparent.png" /><noscript><img width="589" height="623" src="https://www.pngall.com/wp-content/uploads/5/Astronaut-Vector-Transparent.png" class="attachment-full size-full" alt="Astronaut Vector Transparent" /></noscript></div></a>
+			</dt><strong><dd class="wp-caption-text gallery-caption">Astronaut Vector Transparent</strong><br>Resolution: 589 × 623<br>Size: 214 KB<br>Image Format: .png<br><a href="https://www.pngall.com/astronaut-png/download/56116" target="blank" class="download">Download</a></dd></dl>
+			<br style='clear: both' />
+		</div>
+
+
+<!-- Quick Adsense WordPress Plugin: http://quickadsense.com/ -->
+<div class="7e5d63c6540feda5e227514ef81ca30a" data-index="3" style="float: none; margin:25px 0 25px 0; text-align:center;">
+<p><span style="font-size:0.8em">Advertisements</span><style type="text/css"> 
+.adslot_1 { max-width: 300px; height: auto; margin:10px 0px; }
+@media (min-width:125px) { .adslot_1 { width:125px; height:125px; } } 
+@media (min-width:180px) { .adslot_1 { width:180px; height:150px; } } 
+@media (min-width:200px) { .adslot_1 { width:200px; height:200px; } } 
+@media (min-width:250px) { .adslot_1 { width:250px; height:250px; } } 
+@media (min-width:300px) { .adslot_1 { width:300px; height:600px; } } 
+@media (min-width:336px) { .adslot_1 { width:336px; height:280px; } } 
+@media (min-width:468px) { .adslot_1 { width:468px; height:60px; } } 
+@media (min-width:728px) { .adslot_1 { width:728px; height:90px; } }
+</style>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- pngall link ads unit -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-8822717667672157"
+     data-ad-slot="5043863148"
+     data-ad-format="link"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+</div>
+
+<div style="font-size: 0px; height: 0px; line-height: 0px; margin: 0; padding: 0; clear: both;"></div>											</div><!-- .entry-content -->
+						<h3>Matched Content:</h3>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-format="autorelaxed"
+     data-ad-client="ca-pub-8822717667672157"
+     data-ad-slot="8613365474"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+		<br/ >
+									 
+				<div class="clear"></div>
+			
+			</article><!-- #post -->
+							<h3>Related PNG:</h3>
+<!-- relpost-thumb-wrapper --><div class="relpost-thumb-wrapper"><!-- filter-class --><div class="relpost-thumb-container"><div style="clear: both"></div><div style="clear: both"></div><!-- relpost-block-container --><div class="relpost-block-container"><a class="relpost-block-single" href="https://www.pngall.com/ufo-png"><div class="relpost-custom-block-single" style="width: 180px; height: 255px;"><div class="relpost-block-single-image" alt="UFO PNG High Quality Image"  style="background: transparent url(https://www.pngall.com/wp-content/uploads/2/UFO-PNG-High-Quality-Image-180x180.png) no-repeat scroll 0% 0%; width: 180px; height: 180px;"></div><div class="relpost-block-single-text"  style="font-family: Arial;  font-size: 16px;  color: #333333;">UFO PNG Transparent Images</div></div></a><a class="relpost-block-single" href="https://www.pngall.com/orbit-png"><div class="relpost-custom-block-single" style="width: 180px; height: 255px;"><div class="relpost-block-single-image" alt="Orbit PNG Image File"  style="background: transparent url(https://www.pngall.com/wp-content/uploads/8/Orbit-PNG-Image-File-180x180.png) no-repeat scroll 0% 0%; width: 180px; height: 180px;"></div><div class="relpost-block-single-text"  style="font-family: Arial;  font-size: 16px;  color: #333333;">Orbit PNG Transparent Images</div></div></a><a class="relpost-block-single" href="https://www.pngall.com/nebula-png"><div class="relpost-custom-block-single" style="width: 180px; height: 255px;"><div class="relpost-block-single-image" alt="Nebula PNG Image"  style="background: transparent url(https://www.pngall.com/wp-content/uploads/10/Nebula-PNG-Image-180x180.png) no-repeat scroll 0% 0%; width: 180px; height: 180px;"></div><div class="relpost-block-single-text"  style="font-family: Arial;  font-size: 16px;  color: #333333;">Nebula PNG Transparent Images</div></div></a></div><!-- close relpost-block-container --><div style="clear: both"></div></div><!-- close filter class --></div><!-- close relpost-thumb-wrapper --><br/ >			
+					  		
+<!-- BEGIN #comments -->
+<div id="comments">
+
+			<div id="respond" class="comment-respond">
+		<h3 id="reply-title" class="comment-reply-title">Leave a Comment <small><a rel="nofollow" id="cancel-comment-reply-link" href="/astronaut-png?q=%2Fastronaut-png#respond" style="display:none;">Cancel Reply</a></small></h3><form action="https://www.pngall.com/wp-comments-post.php" method="post" id="commentform" class="comment-form"><p class="comment-form-comment"><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true"></textarea></p><p class="comment-form-author"><label for="author">Name <span class="required">*</span></label> <input id="author" name="author" type="text" value="" size="30" maxlength="245" required='required' /></p>
+<p class="comment-form-email"><label for="email">Email <span class="required">*</span></label> <input id="email" name="email" type="text" value="" size="30" maxlength="100" required='required' /></p>
+<p class="comment-form-url"><label for="url">Website</label> <input id="url" name="url" type="text" value="" size="30" maxlength="200" /></p>
+<div class="anr_captcha_field"><div id="anr_captcha_field_1" class="anr_captcha_field_div"></div></div><p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Submit Comment" /> <input type='hidden' name='comment_post_ID' value='54005' id='comment_post_ID' />
+<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+</p><p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="d7b0a92508" /></p><p style="display: none !important;"><label>&#916;<textarea name="ak_hp_textarea" cols="45" rows="8" maxlength="100"></textarea></label><input type="hidden" id="ak_js" name="ak_js" value="70"/><script type="rocketlazyloadscript">document.getElementById( "ak_js" ).setAttribute( "value", ( new Date() ).getTime() );</script></p></form>	</div><!-- #respond -->
+	
+		
+<!-- #comments -->
+</div> 	
+		  			  		
+			
+	</div><!-- #content -->
+
+
+	<div id="sidebar">
+	
+				
+			<div class="widget entry-meta entry-header">
+			
+				                 
+	            <span class="entry-views"><i class="icon-camera"></i> 7206 Total Views</span> 
+				
+				<span class="entry-categories"><i class="icon-folder-close"></i> <a href="https://www.pngall.com/category/space" rel="category tag">Space</a> PNG</span>
+				
+								
+								
+				<div class="additional-info">	
+									</div><!-- .additional-info -->
+							
+			</div><!-- .entry-meta .entry-header -->
+				
+				
+		<aside id="search-2" class="widget widget_search"><h3 class="widget-title">Search</h3><div class="search-form">
+	<form action="https://www.pngall.com" id="searchform" method="get">
+		<input name="s" type="text" placeholder="Search this site..."></input>
+	</form>
+</div><!-- .search-form --></aside><aside id="custom_html-6" class="widget_text widget widget_custom_html"><h3 class="widget-title">Follow Us</h3><div class="textwidget custom-html-widget"><a href="https://www.facebook.com/pngall" class="fa fa-facebook" target="_blank" rel="noopener"></a>
+<a href="https://www.twitter.com/pngallimg" class="fa fa-twitter" target="_blank" rel="noopener"></a>
+<a href="https://feeds.feedburner.com/PNGAll" class="fa fa-rss" target="_blank" rel="noopener"></a>
+</div></aside><aside id="categories-3" class="widget widget_categories"><h3 class="widget-title">Categories</h3>
+			<ul>
+					<li class="cat-item cat-item-41"><a href="https://www.pngall.com/category/alphabets-numbers">Alphabets &amp; Numbers</a> (41)
+</li>
+	<li class="cat-item cat-item-2"><a href="https://www.pngall.com/category/animals">Animals</a> (202)
+<ul class='children'>
+	<li class="cat-item cat-item-3"><a href="https://www.pngall.com/category/animals/birds">Birds</a> (54)
+</li>
+	<li class="cat-item cat-item-4"><a href="https://www.pngall.com/category/animals/insects">Insects</a> (25)
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-286"><a href="https://www.pngall.com/category/anime">Anime</a> (15)
+</li>
+	<li class="cat-item cat-item-7"><a href="https://www.pngall.com/category/artistic">Artistic</a> (149)
+</li>
+	<li class="cat-item cat-item-274"><a href="https://www.pngall.com/category/brands">Brands</a> (27)
+</li>
+	<li class="cat-item cat-item-29"><a href="https://www.pngall.com/category/cartoon">Cartoon</a> (93)
+</li>
+	<li class="cat-item cat-item-38"><a href="https://www.pngall.com/category/celebs">Celebs</a> (70)
+</li>
+	<li class="cat-item cat-item-227"><a href="https://www.pngall.com/category/clothing">Clothing</a> (46)
+</li>
+	<li class="cat-item cat-item-313"><a href="https://www.pngall.com/category/cryptocurrency">Cryptocurrency</a> (60)
+</li>
+	<li class="cat-item cat-item-8"><a href="https://www.pngall.com/category/education">Education</a> (66)
+</li>
+	<li class="cat-item cat-item-9"><a href="https://www.pngall.com/category/fantasy">Fantasy</a> (50)
+</li>
+	<li class="cat-item cat-item-264"><a href="https://www.pngall.com/category/fictional-characters">Fictional Characters</a> (64)
+</li>
+	<li class="cat-item cat-item-151"><a href="https://www.pngall.com/category/flags">Flags</a> (44)
+</li>
+	<li class="cat-item cat-item-10"><a href="https://www.pngall.com/category/food">Food</a> (233)
+<ul class='children'>
+	<li class="cat-item cat-item-11"><a href="https://www.pngall.com/category/food/fruits">Fruits</a> (33)
+</li>
+	<li class="cat-item cat-item-12"><a href="https://www.pngall.com/category/food/vegetables">Vegetables</a> (18)
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-31"><a href="https://www.pngall.com/category/games">Games</a> (113)
+</li>
+	<li class="cat-item cat-item-13"><a href="https://www.pngall.com/category/holidays-events">Holidays &amp; Events</a> (118)
+</li>
+	<li class="cat-item cat-item-35"><a href="https://www.pngall.com/category/internet">Internet</a> (215)
+</li>
+	<li class="cat-item cat-item-23"><a href="https://www.pngall.com/category/lifestyle">Lifestyle</a> (113)
+</li>
+	<li class="cat-item cat-item-14"><a href="https://www.pngall.com/category/love">Love</a> (34)
+</li>
+	<li class="cat-item cat-item-1"><a href="https://www.pngall.com/category/miscellaneous">Miscellaneous</a> (206)
+<ul class='children'>
+	<li class="cat-item cat-item-152"><a href="https://www.pngall.com/category/miscellaneous/stamps">Stamps</a> (12)
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-37"><a href="https://www.pngall.com/category/movies">Movies</a> (55)
+</li>
+	<li class="cat-item cat-item-15"><a href="https://www.pngall.com/category/music">Music</a> (128)
+</li>
+	<li class="cat-item cat-item-5"><a href="https://www.pngall.com/category/nature">Nature</a> (150)
+</li>
+	<li class="cat-item cat-item-25"><a href="https://www.pngall.com/category/objects">Objects</a> (256)
+</li>
+	<li class="cat-item cat-item-17"><a href="https://www.pngall.com/category/people">People</a> (118)
+</li>
+	<li class="cat-item cat-item-18"><a href="https://www.pngall.com/category/religion">Religion</a> (48)
+</li>
+	<li class="cat-item cat-item-300"><a href="https://www.pngall.com/category/sign-board">Sign Board</a> (15)
+</li>
+	<li class="cat-item cat-item-45"><a href="https://www.pngall.com/category/space">Space</a> (20)
+</li>
+	<li class="cat-item cat-item-19"><a href="https://www.pngall.com/category/sports">Sports</a> (181)
+</li>
+	<li class="cat-item cat-item-20"><a href="https://www.pngall.com/category/technology">Technology</a> (135)
+</li>
+	<li class="cat-item cat-item-217"><a href="https://www.pngall.com/category/text">Text</a> (12)
+</li>
+	<li class="cat-item cat-item-21"><a href="https://www.pngall.com/category/vehicles">Vehicles</a> (134)
+<ul class='children'>
+	<li class="cat-item cat-item-22"><a href="https://www.pngall.com/category/vehicles/cars">Cars</a> (65)
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-6"><a href="https://www.pngall.com/category/world">World</a> (110)
+</li>
+			</ul>
+
+			</aside>
+		<aside id="recent-posts-2" class="widget widget_recent_entries">
+		<h3 class="widget-title">Latest PNG Images</h3>
+		<ul>
+											<li>
+					<a href="https://www.pngall.com/made-in-usa-png">Made In USA PNG Transparent Images</a>
+									</li>
+											<li>
+					<a href="https://www.pngall.com/made-in-italy-png">Made In Italy PNG Transparent Images</a>
+									</li>
+											<li>
+					<a href="https://www.pngall.com/made-in-india-png">Made In India PNG Transparent Images</a>
+									</li>
+											<li>
+					<a href="https://www.pngall.com/made-in-europe-png">Made In Europe PNG Transparent Images</a>
+									</li>
+					</ul>
+
+		</aside><aside id="custom_html-10" class="widget_text widget widget_custom_html"><div class="textwidget custom-html-widget"><div id='vi-sticky-ad'>
+              <div id='vi-ad'>
+                <div class="height_250_ad">
+                  <div class="adsbyvli" style="width:300px; height:250px" data-ad-slot="vi_98662"></div> <script type="rocketlazyloadscript">(vitag.Init = window.vitag.Init || []).push(function () { viAPItag.display("vi_98662") })</script>
+                </div>
+                <div class="text-ads"
+                  style="text-align: center; font-size: 12px; padding-top: 10px; padding-bottom: 10px; text-transform: uppercase;">
+                  Advertisement</div>
+                <div class="height_250_ad">
+                  <div class="adsbyvli" style="width:300px; height:250px" data-ad-slot="vi_98662"></div> <script type="rocketlazyloadscript">(vitag.Init = window.vitag.Init || []).push(function () { viAPItag.display("vi_98662") })</script>
+                </div>
+              </div>
+            </div>
+            <script type="rocketlazyloadscript">
+              if (window.innerWidth > 900) {
+                var adElemSticky = document.getElementById('vi-sticky-ad');
+                window.onscroll = function () {
+                  var adElem = document.getElementById('vi-ad');
+                  var rect = adElemSticky.getBoundingClientRect();
+                  adElemSticky.style.width = rect.width + 'px';
+                  adElemSticky.style.height = rect.height + 'px';
+                  console.log(rect);
+                  console.log(rect.top);
+                  if (rect.top <= 0) {
+                    adElem.style.position = 'fixed';
+                    adElem.style.top = '15px';
+                    adElem.style.zIndex = '2147483647';
+                    adElem.style.width = rect.width + 'px';
+                    adElem.style.height = rect.height + 'px';
+                  } else {
+                    adElem.style.position = '';
+                    adElem.style.top = '';
+                    adElem.style.zIndex = '';
+                    adElem.style.width = '';
+                    adElem.style.height = '';
+                  }
+                };
+              }
+              (function () {
+                var adElemSticky = document.getElementById('vi-sticky-ad');
+                var width = window.innerWidth;
+                if (width <= 900) {
+                  adElemSticky.innerHTML = '';
+                }
+              }());
+            </script></div></aside>		
+	</div><!-- #sidebar -->
+	
+<div class="clear"></div>
+</div><!-- #main -->
+
+	<footer id="footer">
+				
+				<div id="copyright" class="container">
+				<div class="right">
+				&copy; 2016 - 2021 <a href="https://www.pngall.com">PNG All</a>. All rights reserved.          				</div><!-- .left -->
+				<div class="left">
+				
+					
+
+<a href="/">Home</a> | <a href="/cookie-policy">Cookie Policy</a> | <a href="/privacy-policy">Privacy Policy</a> | <a href="/about">About</a> | <a href="/sitemap.xml">Sitemap</a>
+				</div><!-- .right -->
+				<div class="clear"></div>
+		</div><!-- #copyright -->
+		
+	</footer><!-- #footer -->
+	
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript">var jQueryScriptOutputted = false;function initJQuery() {if (typeof(jQuery) == "undefined") {if (!jQueryScriptOutputted) {jQueryScriptOutputted = true;document.write("<scr" + "ipt type=\"text/javascript\" src=\"https://code.jquery.com/jquery-1.8.2.min.js\"></scr" + "ipt>");}setTimeout("initJQuery()", 50);}}initJQuery();</script><script type="rocketlazyloadscript" data-rocket-type="text/javascript">jQuery(document).ready(function() {
+jQuery(".7e5d63c6540feda5e227514ef81ca30a").click(function() {
+jQuery.post(
+"https://www.pngall.com/wp-admin/admin-ajax.php", {
+"action": "quick_adsense_onpost_ad_click",
+"quick_adsense_onpost_ad_index": jQuery(this).attr("data-index"),
+"quick_adsense_nonce": "af3812f237",
+}, function(response) { }
+);
+});
+});
+</script><!-- Powered by WPtouch: 4.3.28 --><script type="rocketlazyloadscript" data-rocket-type='text/javascript' id='rocket-browser-checker-js-after'>
+"use strict";var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||!1,descriptor.configurable=!0,"value"in descriptor&&(descriptor.writable=!0),Object.defineProperty(target,descriptor.key,descriptor)}}return function(Constructor,protoProps,staticProps){return protoProps&&defineProperties(Constructor.prototype,protoProps),staticProps&&defineProperties(Constructor,staticProps),Constructor}}();function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor))throw new TypeError("Cannot call a class as a function")}var RocketBrowserCompatibilityChecker=function(){function RocketBrowserCompatibilityChecker(options){_classCallCheck(this,RocketBrowserCompatibilityChecker),this.passiveSupported=!1,this._checkPassiveOption(this),this.options=!!this.passiveSupported&&options}return _createClass(RocketBrowserCompatibilityChecker,[{key:"_checkPassiveOption",value:function(self){try{var options={get passive(){return!(self.passiveSupported=!0)}};window.addEventListener("test",null,options),window.removeEventListener("test",null,options)}catch(err){self.passiveSupported=!1}}},{key:"initRequestIdleCallback",value:function(){!1 in window&&(window.requestIdleCallback=function(cb){var start=Date.now();return setTimeout(function(){cb({didTimeout:!1,timeRemaining:function(){return Math.max(0,50-(Date.now()-start))}})},1)}),!1 in window&&(window.cancelIdleCallback=function(id){return clearTimeout(id)})}},{key:"isDataSaverModeOn",value:function(){return"connection"in navigator&&!0===navigator.connection.saveData}},{key:"supportsLinkPrefetch",value:function(){var elem=document.createElement("link");return elem.relList&&elem.relList.supports&&elem.relList.supports("prefetch")&&window.IntersectionObserver&&"isIntersecting"in IntersectionObserverEntry.prototype}},{key:"isSlowConnection",value:function(){return"connection"in navigator&&"effectiveType"in navigator.connection&&("2g"===navigator.connection.effectiveType||"slow-2g"===navigator.connection.effectiveType)}}]),RocketBrowserCompatibilityChecker}();
+</script>
+<script type='text/javascript' id='rocket-preload-links-js-extra'>
+/* <![CDATA[ */
+var RocketPreloadLinksConfig = {"excludeUris":"\/adv1\/|\/monetization.js|\/(.+\/)?feed\/?.+\/?|\/(?:.+\/)?embed\/|\/(index\\.php\/)?wp\\-json(\/.*|$)|\/wp-admin|\/logout|\/wp-login.php","usesTrailingSlash":"","imageExt":"jpg|jpeg|gif|png|tiff|bmp|webp|avif","fileExt":"jpg|jpeg|gif|png|tiff|bmp|webp|avif|php|pdf|html|htm","siteUrl":"https:\/\/www.pngall.com","onHoverDelay":"100","rateThrottle":"3"};
+/* ]]> */
+</script>
+<script type="rocketlazyloadscript" data-rocket-type='text/javascript' id='rocket-preload-links-js-after'>
+(function() {
+"use strict";var r="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},e=function(){function i(e,t){for(var n=0;n<t.length;n++){var i=t[n];i.enumerable=i.enumerable||!1,i.configurable=!0,"value"in i&&(i.writable=!0),Object.defineProperty(e,i.key,i)}}return function(e,t,n){return t&&i(e.prototype,t),n&&i(e,n),e}}();function i(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}var t=function(){function n(e,t){i(this,n),this.browser=e,this.config=t,this.options=this.browser.options,this.prefetched=new Set,this.eventTime=null,this.threshold=1111,this.numOnHover=0}return e(n,[{key:"init",value:function(){!this.browser.supportsLinkPrefetch()||this.browser.isDataSaverModeOn()||this.browser.isSlowConnection()||(this.regex={excludeUris:RegExp(this.config.excludeUris,"i"),images:RegExp(".("+this.config.imageExt+")$","i"),fileExt:RegExp(".("+this.config.fileExt+")$","i")},this._initListeners(this))}},{key:"_initListeners",value:function(e){-1<this.config.onHoverDelay&&document.addEventListener("mouseover",e.listener.bind(e),e.listenerOptions),document.addEventListener("mousedown",e.listener.bind(e),e.listenerOptions),document.addEventListener("touchstart",e.listener.bind(e),e.listenerOptions)}},{key:"listener",value:function(e){var t=e.target.closest("a"),n=this._prepareUrl(t);if(null!==n)switch(e.type){case"mousedown":case"touchstart":this._addPrefetchLink(n);break;case"mouseover":this._earlyPrefetch(t,n,"mouseout")}}},{key:"_earlyPrefetch",value:function(t,e,n){var i=this,r=setTimeout(function(){if(r=null,0===i.numOnHover)setTimeout(function(){return i.numOnHover=0},1e3);else if(i.numOnHover>i.config.rateThrottle)return;i.numOnHover++,i._addPrefetchLink(e)},this.config.onHoverDelay);t.addEventListener(n,function e(){t.removeEventListener(n,e,{passive:!0}),null!==r&&(clearTimeout(r),r=null)},{passive:!0})}},{key:"_addPrefetchLink",value:function(i){return this.prefetched.add(i.href),new Promise(function(e,t){var n=document.createElement("link");n.rel="prefetch",n.href=i.href,n.onload=e,n.onerror=t,document.head.appendChild(n)}).catch(function(){})}},{key:"_prepareUrl",value:function(e){if(null===e||"object"!==(void 0===e?"undefined":r(e))||!1 in e||-1===["http:","https:"].indexOf(e.protocol))return null;var t=e.href.substring(0,this.config.siteUrl.length),n=this._getPathname(e.href,t),i={original:e.href,protocol:e.protocol,origin:t,pathname:n,href:t+n};return this._isLinkOk(i)?i:null}},{key:"_getPathname",value:function(e,t){var n=t?e.substring(this.config.siteUrl.length):e;return n.startsWith("/")||(n="/"+n),this._shouldAddTrailingSlash(n)?n+"/":n}},{key:"_shouldAddTrailingSlash",value:function(e){return this.config.usesTrailingSlash&&!e.endsWith("/")&&!this.regex.fileExt.test(e)}},{key:"_isLinkOk",value:function(e){return null!==e&&"object"===(void 0===e?"undefined":r(e))&&(!this.prefetched.has(e.href)&&e.origin===this.config.siteUrl&&-1===e.href.indexOf("?")&&-1===e.href.indexOf("#")&&!this.regex.excludeUris.test(e.href)&&!this.regex.images.test(e.href))}}],[{key:"run",value:function(){"undefined"!=typeof RocketPreloadLinksConfig&&new n(new RocketBrowserCompatibilityChecker({capture:!0,passive:!0}),RocketPreloadLinksConfig).init()}}]),n}();t.run();
+}());
+</script>
+<script type="rocketlazyloadscript" data-rocket-type='text/javascript' src='https://www.pngall.com/wp-includes/js/comment-reply.min.js?ver=3e5127613c2aa5248f9ef3135727e949' id='comment-reply-js'></script>
+			<script type="rocketlazyloadscript" data-rocket-type="text/javascript">
+				var anr_onloadCallback = function() {
+					for ( var i = 0; i < document.forms.length; i++ ) {
+						var form = document.forms[i];
+						var captcha_div = form.querySelector( '.anr_captcha_field_div' );
+
+						if ( null === captcha_div )
+							continue;
+						captcha_div.innerHTML = '';
+						( function( form ) {
+							var anr_captcha = grecaptcha.render( captcha_div,{
+								'sitekey' : '6LdENs8UAAAAANiJ7a_tnKzi74wz3UQOnEAi-R3G',
+								'size'  : 'normal',
+								'theme' : 'light'
+							});
+							if ( typeof jQuery !== 'undefined' ) {
+								jQuery( document.body ).on( 'checkout_error', function(){
+									grecaptcha.reset(anr_captcha);
+								});
+							}
+							if ( typeof wpcf7 !== 'undefined' ) {
+								document.addEventListener( 'wpcf7submit', function() {
+									grecaptcha.reset(anr_captcha);
+								}, false );
+							}
+						})(form);
+					}
+				};
+			</script>
+						<script type="rocketlazyloadscript" src="https://www.google.com/recaptcha/api.js?onload=anr_onloadCallback&#038;render=explicit"
+				async defer>
+			</script>
+			<script>window.lazyLoadOptions={elements_selector:"img[data-lazy-src],.rocket-lazyload,iframe[data-lazy-src]",data_src:"lazy-src",data_srcset:"lazy-srcset",data_sizes:"lazy-sizes",class_loading:"lazyloading",class_loaded:"lazyloaded",threshold:300,callback_loaded:function(element){if(element.tagName==="IFRAME"&&element.dataset.rocketLazyload=="fitvidscompatible"){if(element.classList.contains("lazyloaded")){if(typeof window.jQuery!="undefined"){if(jQuery.fn.fitVids){jQuery(element).parent().fitVids()}}}}}};window.addEventListener('LazyLoad::Initialized',function(e){var lazyLoadInstance=e.detail.instance;if(window.MutationObserver){var observer=new MutationObserver(function(mutations){var image_count=0;var iframe_count=0;var rocketlazy_count=0;mutations.forEach(function(mutation){for(i=0;i<mutation.addedNodes.length;i++){if(typeof mutation.addedNodes[i].getElementsByTagName!=='function'){continue}
+if(typeof mutation.addedNodes[i].getElementsByClassName!=='function'){continue}
+images=mutation.addedNodes[i].getElementsByTagName('img');is_image=mutation.addedNodes[i].tagName=="IMG";iframes=mutation.addedNodes[i].getElementsByTagName('iframe');is_iframe=mutation.addedNodes[i].tagName=="IFRAME";rocket_lazy=mutation.addedNodes[i].getElementsByClassName('rocket-lazyload');image_count+=images.length;iframe_count+=iframes.length;rocketlazy_count+=rocket_lazy.length;if(is_image){image_count+=1}
+if(is_iframe){iframe_count+=1}}});if(image_count>0||iframe_count>0||rocketlazy_count>0){lazyLoadInstance.update()}});var b=document.getElementsByTagName("body")[0];var config={childList:!0,subtree:!0};observer.observe(b,config)}},!1)</script><script data-no-minify="1" async src="https://www.pngall.com/wp-content/plugins/wp-rocket/assets/js/lazyload/16.1/lazyload.min.js"></script><style>
+._bsa_flexbar .flexbar-logo img { background: none; }
+</style><script src="//m.servedby-buysellads.com/monetization.js" type="text/javascript"></script>
+<script>
+(function(){
+	if(typeof _bsa !== 'undefined' && _bsa) {
+  		// format, zoneKey, segment:value, options
+  		_bsa.init('flexbar', 'CK7DC2JU', 'placement:pngallcom');
+  	}
+})();
+</script>
+</body>
+</html>
+<!-- This website is like a Rocket, isn't it? Performance optimized by WP Rocket. Learn more: https://wp-rocket.me - Debug: cached@1635444033 -->
